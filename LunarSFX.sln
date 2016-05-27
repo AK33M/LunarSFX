@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarSFX", "LunarSFX\LunarSFX.csproj", "{4C8F3B82-3315-43C7-8C3C-36A784BAD9B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarSFX.Tests", "LunarSFX.Tests\LunarSFX.Tests.csproj", "{629B3151-CB77-428B-A8B6-296C88E6887C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarSFX.Core", "LunarSFX.Core\LunarSFX.Core.csproj", "{22228293-9224-4B10-9DCC-6B7A99DFE035}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C8F3B82-3315-43C7-8C3C-36A784BAD9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8F3B82-3315-43C7-8C3C-36A784BAD9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8F3B82-3315-43C7-8C3C-36A784BAD9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8F3B82-3315-43C7-8C3C-36A784BAD9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{629B3151-CB77-428B-A8B6-296C88E6887C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629B3151-CB77-428B-A8B6-296C88E6887C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629B3151-CB77-428B-A8B6-296C88E6887C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629B3151-CB77-428B-A8B6-296C88E6887C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22228293-9224-4B10-9DCC-6B7A99DFE035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22228293-9224-4B10-9DCC-6B7A99DFE035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22228293-9224-4B10-9DCC-6B7A99DFE035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22228293-9224-4B10-9DCC-6B7A99DFE035}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
