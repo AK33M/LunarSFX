@@ -2,15 +2,15 @@ html{height: 100%;}
 
 body
 { font-family: "lucida sans", arial, sans-serif;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   font-size: .78em;
   background: #090708;
   color: #5D5D5D;}
 
 p
-{ margin: 0px;
-  padding: 0px 0px 16px 0px;
+{ margin: 0;
+  padding: 0 0 16px 0;
   line-height: 1.7em;}
 
 h1, h2, h3, h4, h5, h6 
@@ -49,9 +49,9 @@ a:hover
   color: #00C5EE;}
 
 img
-{ border: 0px; 
-  margin: 0px; 
-  padding: 0px;}
+{ border: 0; 
+  margin: 0; 
+  padding: 0;}
 
 a
 { outline: none;}
@@ -74,27 +74,27 @@ form
   margin: 0 auto;}
 
 blockquote
-{ margin: 20px 0px 20px 0px; 
-  padding: 10px 20px 0px 20px;
+{ margin: 20px 0 20px 0; 
+  padding: 10px 20px 0 20px;
   border: 1px solid #E5E5DB;
   background: #FFF;}
 
 ul
-{ margin: 2px 0px 18px 16px;
-  padding: 0px;}
+{ margin: 2px 0 18px 16px;
+  padding: 0;}
 
 ul li
 { list-style-type: square;
-  margin: 0px 0px 6px 0px; 
-  padding: 0px;}
+  margin: 0 0 6px 0; 
+  padding: 0;}
 
 ol
-{ margin: 8px 0px 0px 24px;
-  padding: 0px;}
+{ margin: 8px 0 0 24px;
+  padding: 0;}
 
 ol li
-{ margin: 0px 0px 11px 0px; 
-  padding: 0px;}
+{ margin: 0 0 11px 0; 
+  padding: 0;}
 
 #main, #logo, #menubar, #site_content, #footer
 { margin-left: auto; 
@@ -104,7 +104,7 @@ ol li
 { padding-bottom: 40px;}
 
 #header
-{ background: transparent url(logo.jpg) no-repeat;}
+{ background: transparent url(images/logo.jpg) no-repeat;}
 
 #logo
 { width: 860px;
@@ -147,12 +147,12 @@ ol li
 
 ul#menu
 { float: right;
-  margin: 0px;}
+  margin: 0;}
 
 ul#menu li
 { float: left;
   margin: 5px 0 0 0;
-  padding: 0 0 0 0px;
+  padding: 0 0 0 0;
   list-style: none;}
 
 ul#menu li a
@@ -206,7 +206,7 @@ ul#menu li a:hover
 .sidebar li a, .sidebar li a:hover
 { padding: 0 0 0 35px;
   display: block;
-  background: transparent url(link.png) no-repeat left center;
+  background: transparent url(images/link.png) no-repeat left center;
   border: 0;} 
 
 .sidebar li a.selected
@@ -218,11 +218,11 @@ ul#menu li a:hover
   padding: 0;}
 
 #content ul
-{ margin: 2px 0 22px 0px;}
+{ margin: 2px 0 22px 0;}
 
 #content ul li
 { list-style-type: none;
-  background: url(bullet.png) no-repeat;
+  background: url(images/bullet.png) no-repeat;
   margin: 0 0 0 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}
