@@ -35,6 +35,7 @@
 
         <!-- Site Content -->
         <div id="site_content">
+            @Html.Partial("_Search")
             @RenderBody()
         </div>
 
@@ -43,5 +44,7 @@
             Copyright &copy; @DateTime.Now.Year LunarSFX All Rights Reserved
         </div>
     </div>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+    <script src="@Url.Content("~/Scripts/app.js")"></script>
 </body>
 </html>

@@ -31,7 +31,7 @@ namespace LunarSFX.Controllers
             if (viewModel.Category == null)
                 throw new HttpException(404, "Category not found");
 
-            ViewBag.Title = String.Format(@"Latest posts on category ""{0}""",
+            ViewBag.Title = string.Format(@"Latest posts on category ""{0}""",
                                 viewModel.Category.Name);
             return View("List", viewModel);
         }
@@ -42,8 +42,16 @@ namespace LunarSFX.Controllers
             if (viewModel.Tag == null)
                 throw new HttpException(404, "Tag not found");
 
-            ViewBag.Title = String.Format(@"Latest posts tagged on ""{0}""",
+            ViewBag.Title = string.Format(@"Latest posts tagged on ""{0}""",
                 viewModel.Tag.Name);
+            return View("List", viewModel);
+        }
+        public ViewResult Search(string s, int p = 1)
+        {
+            ViewBag.Title = string.Format(@"Lists of posts found
+                        for search text ""{0}""", s);
+
+            var viewModel = new ListViewModel(_blogRepository, s, "Search", p);
             return View("List", viewModel);
         }
     }

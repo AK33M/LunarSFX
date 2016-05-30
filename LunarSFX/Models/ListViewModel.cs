@@ -25,10 +25,15 @@ namespace LunarSFX.Models
                     TotalPosts = blogRepository.TotalPostsForTag(text);
                     Tag = blogRepository.Tag(text);
                     break;
-                default:
+                case "Category":
                     Posts = blogRepository.PostsForCategory(text, p - 1, 10);
                     TotalPosts = blogRepository.TotalPostsForCategory(text);
                     Category = blogRepository.Category(text);
+                    break;
+                default:
+                    Posts = blogRepository.PostsForSearch(text, p - 1, 10);
+                    TotalPosts = blogRepository.TotalPostsForSearch(text);
+                    Search = text;
                     break;
             }
         }
@@ -37,5 +42,6 @@ namespace LunarSFX.Models
         public int TotalPosts { get; internal set; }
         public Category Category { get; private set; }
         public Tag Tag { get; internal set; }
+        public string Search { get; internal set; }
     }   
 }

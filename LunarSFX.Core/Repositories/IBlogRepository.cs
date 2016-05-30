@@ -17,5 +17,7 @@ namespace LunarSFX.Core.Repositories
         IList<Post> PostsForTag(string tagSlug, int pageNo, int pageSize);
         int TotalPostsForTag(string tagSlug);
         Tag Tag(string tagSlug);
+        IList<Post> PostsForSearch(string search, int pageNo, int pageSize);
+        int TotalPostsForSearch(string search);
     }
 }
