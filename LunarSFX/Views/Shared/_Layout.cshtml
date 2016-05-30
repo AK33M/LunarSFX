@@ -35,7 +35,9 @@
 
         <!-- Site Content -->
         <div id="site_content">
-            @Html.Partial("_Search")
+            <div class="sidebar">
+                @Html.Partial("_Search")
+            </div>
             @RenderBody()
         </div>
 
