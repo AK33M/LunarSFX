@@ -70,5 +70,12 @@ namespace LunarSFX.Controllers
 
             return View(post);
         }
+
+        [ChildActionOnly]
+        public PartialViewResult Sidebars()
+        {
+            var widgetViewModel = new WidgetViewModel(_blogRepository);
+            return PartialView("_Sidebars", widgetViewModel);
+        }
     }
 }

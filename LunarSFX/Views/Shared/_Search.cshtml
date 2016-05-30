@@ -1,11 +1,13 @@
-﻿@using (Html.BeginForm(
-                "Search",           // action
-                "Blog",             // controller
-                FormMethod.Get,     // method
-                new { id = "search-form" })) // html attributes
+﻿<div class="sidebar">
+    @using (Html.BeginForm(
+                    "Search",           // action
+                    "Blog",             // controller
+                    FormMethod.Get,     // method
+                    new { id = "search-form" })) // html attributes
 {
     <p>
         @Html.TextBox("s")
         <input type="submit" value="Search">
     </p>
 }
+</div>

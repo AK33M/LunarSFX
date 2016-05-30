@@ -38,10 +38,10 @@ namespace LunarSFX.Models
             }
         }
 
-        public IList<Post> Posts { get; internal set; }
-        public int TotalPosts { get; internal set; }
+        public IList<Post> Posts { get; private set; }
+        public int TotalPosts { get; private set; }
         public Category Category { get; private set; }
-        public Tag Tag { get; internal set; }
-        public string Search { get; internal set; }
+        public Tag Tag { get; private set; }
+        public string Search { get; private set; }
     }   
 }
