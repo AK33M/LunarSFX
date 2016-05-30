@@ -16,7 +16,26 @@ namespace LunarSFX.Models
             TotalPosts = _blogRepository.TotalPosts();
         }
 
+        public ListViewModel(IBlogRepository blogRepository, string text, string type, int p)
+        {
+            switch (type)
+            {
+                case "Tag":
+                    Posts = blogRepository.PostsForTag(text, p - 1, 10);
+                    TotalPosts = blogRepository.TotalPostsForTag(text);
+                    Tag = blogRepository.Tag(text);
+                    break;
+                default:
+                    Posts = blogRepository.PostsForCategory(text, p - 1, 10);
+                    TotalPosts = blogRepository.TotalPostsForCategory(text);
+                    Category = blogRepository.Category(text);
+                    break;
+            }
+        }
+
         public IList<Post> Posts { get; internal set; }
         public int TotalPosts { get; internal set; }
+        public Category Category { get; private set; }
+        public Tag Tag { get; internal set; }
     }   
 }
