@@ -7,48 +7,67 @@
     <title>@ViewBag.Title</title>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css"
-          href="@Url.Content("~/Content/themes/simple/style.css")" />
-    <link rel="stylesheet" type="text/css" href=""/>
+    @*<link rel="stylesheet" type="text/css"
+          href="@Url.Content("~/Content/themes/simple/style.css")" />*@
+    @Styles.Render("~/Content/clean/css")
 </head>
 
 <body>
-    <div id="main">
-        <!-- Header -->
-        <div id="header">
-            <div id="logo">
-                <div id="logo_text">
-                    <h1><a href="/">Lunar<span class="logo_colour">SFX</span></a></h1>
-                    <h2>Writings, Experiments and More...</h2>
-                </div>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toogle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("LunarSFX", "Posts",null,new { @class= "navbar-brand"})
             </div>
-
-            <!-- Navigation -->
-            <div id="menubar">
-                <ul id="menu">
-                    <li>@Html.ActionLink("Posts", "Posts")</li>
-                    <li>@Html.ActionLink("Contact", "Contact")</li>
-                    <li>@Html.ActionLink("About Me", "AboutMe")</li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Home", "Posts")</li>
+                    <li>@Html.ActionLink("Contact Us", "Posts")</li>
+                    <li>@Html.ActionLink("About Us", "Posts")</li>
                 </ul>
             </div>
-
         </div>
+    </nav>
+    <div id="main">
+        <!-- Header -->
+        <header class="intro-header" style="background-image: url('../../Images/home-bg.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="site-heading">
+                            <h1>LunarSFX</h1>
+                            <hr class="small" />
+                            <span class="subheading">Writings, Experiments and More...</span>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </header>
 
         <!-- Site Content -->
-        <div id="site_content">
+        <div class="container">
+            @RenderBody()
+        </div>
+        @*<div id="site_content">
        
                 @Html.Partial("_Search")
             
-            @RenderBody()
+            
             @Html.Action("Sidebars")
-        </div>
-
+        </div>*@
+        
         <!-- Footer -->
         <div id="footer">
             Copyright &copy; @DateTime.Now.Year LunarSFX All Rights Reserved
         </div>
     </div>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-    <script src="@Url.Content("~/Scripts/app.js")"></script>
+    @Scripts.Render("~/bundles/js")
+    @*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+    <script src="@Url.Content("~/Scripts/app.js")"></script>*@
 </body>
 </html>
