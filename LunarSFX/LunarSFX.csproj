@@ -151,6 +151,11 @@
     <Content Include="Content\themes\simple\images\tabs.png" />
     <Content Include="Content\themes\simple\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\about-bg.jpg" />
+    <Content Include="Images\contact-bg.jpg" />
+    <Content Include="Images\home-bg.jpg" />
+    <Content Include="Images\post-bg.jpg" />
+    <Content Include="Images\post-sample-image.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
@@ -161,6 +166,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
