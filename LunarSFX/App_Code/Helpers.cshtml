@@ -2,8 +2,6 @@
 {
 foreach (var tag in tags)
 {
-        <div class="tags-div">
-            @LunarSFX.Extensions.ActionLinkExtensions.TagLink(htmlHelper, tag)
-        </div>
-    }
+        @LunarSFX.Extensions.ActionLinkExtensions.TagLink(htmlHelper, tag)
+}
 }

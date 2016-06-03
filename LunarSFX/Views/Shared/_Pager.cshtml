@@ -33,13 +33,14 @@ else
 }
 
   <!--pagination links-->
-    <div class="pager">
-
-        <a href="@p" title="Previous" class="previous"
-           style="visibility:@(currentPage > 1 ? "visible" : "collapse")"><< previous</a>
-
-        <a href="@n" title="Next" class="next"
-           style="visibility:@(currentPage < totalPages ? "visible" : "collapse")">next >></a>
-
-    </div>
+    <ul class="pager">
+        <li class="previous">
+            <a href="@p" title="Previous"
+               style="visibility:@(currentPage > 1 ? "visible" : "collapse")"><< newer posts</a>
+        </li>
+        <li class="next">
+            <a href="@n" title="Next"
+               style="visibility:@(currentPage < totalPages ? "visible" : "collapse")">older posts >></a>
+        </li>
+    </ul>
 }

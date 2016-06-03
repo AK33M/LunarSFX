@@ -2,36 +2,34 @@
 @using LunarSFX.Extensions
 
 <div class="post-preview">
-    <div class="post-meta">
-        <div class="row">
-
-            <!--Heading-->
-            <div class="post-title">
-                <h2>@Html.PostLink(Model)</h2>
-            </div>
-
-        </div>
-
-        <div class="row">
-
+    
+        <!--Heading-->
+        <h2 class="post-title">
+            @Html.PostLink(Model)
+        </h2>
+        @*<div class="post-subtitle">
+            
+        </div>*@
+    
+    <p class="post-meta">
+        
             <!--Category-->
-            <div class="post-category">
-                <span>Category: </span>@Html.CategoryLink(Model.Category)
-            </div>
-
+        <div>
+            @Html.CategoryLink(Model.Category)
+        </div>
+        <div>
             <!--Tags-->
-            <div class="post-tags">
-                <span>Tags:</span>@Helpers.Tags(Html, Model.Tags)
-            </div>
+        
+            @Helpers.Tags(Html, Model.Tags)
+       
 
             <!--Posted date-->
-            <div class="posted-date">
-                @Model.PostedOn.ToConfigLocalTime()
-            </div>
+            <span class="pull-right">Posted On @Model.PostedOn.ToString("f")</span>
 
         </div>
+        
 
-    </div>
+    </p>
 
     <!--Short Description-->
     <div class="post-body">
