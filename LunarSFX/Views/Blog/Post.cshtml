@@ -15,17 +15,17 @@
             <div class="row">
 
                 <div class="post-category">
-                    <span>Category:</span> @Html.CategoryLink(Model.Category)
+                    @Html.CategoryLink(Model.Category)
                 </div>
 
-                <div class="post-tags">
-                    <span>Tags:</span> @Helpers.Tags(Html, Model.Tags)
-                </div>
+                <div>
+                    @Helpers.Tags(Html, Model.Tags)
 
-                <div class="posted-date">
-                    @Model.PostedOn.ToConfigLocalTime()
-                </div>
 
+                    <span class="posted-date pull-right">Posted On 
+                        @Model.PostedOn.ToString("f")
+                </span>
+            </div>
             </div>
         </div>
 
