@@ -6,6 +6,7 @@ using Ninject;
 using LunarSFX.Core.Repositories;
 using System.Web.Optimization;
 
+
 namespace LunarSFX
 {
     public class Global : NinjectHttpApplication
@@ -27,6 +28,7 @@ namespace LunarSFX
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             base.OnApplicationStarted();
         }
     }

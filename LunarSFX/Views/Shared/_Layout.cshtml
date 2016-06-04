@@ -5,12 +5,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
     <!-- Stylesheets -->
     @*<link rel="stylesheet" type="text/css"
-          href="@Url.Content("~/Content/themes/simple/style.css")" />*@
+        href="@Url.Content("~/Content/themes/simple/style.css")" />*@
     @Styles.Render("~/Content/clean/css")
 </head>
 
@@ -24,11 +24,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("LunarSFX", "Posts",null,new { @class= "navbar-brand"})
+                @Html.ActionLink("LunarSFX", "Posts", null, new { @class = "navbar-brand" })
+                @if (Request.IsAuthenticated)
+                {
+                    <span class="navbar-brand">Agent: @CurrentUser.Name, You are in @CurrentUser.Country.</span>
+                }
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Home", "Posts")</li>
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Log In", "LogIn", "Auth")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Log Out", "LogOut", "Auth")</li>
+                    }
                     <li>@Html.ActionLink("Contact Us", "Posts")</li>
                     <li>@Html.ActionLink("About Us", "Posts")</li>
                 </ul>
@@ -46,7 +57,7 @@
                             <hr class="small" />
                             <span class="subheading">Writings, Experiments and More...</span>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </header>
@@ -56,13 +67,13 @@
             @RenderBody()
         </div>
         @*<div id="site_content">
-       
-                @Html.Partial("_Search")
-            
-            
-            @Html.Action("Sidebars")
-        </div>*@
-        
+
+                    @Html.Partial("_Search")
+
+
+                @Html.Action("Sidebars")
+            </div>*@
+
         <!-- Footer -->
         <footer>
             <div class="container">
@@ -102,6 +113,6 @@
     </div>
     @Scripts.Render("~/bundles/js")
     @*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-    <script src="@Url.Content("~/Scripts/app.js")"></script>*@
+        <script src="@Url.Content("~/Scripts/app.js")"></script>*@
 </body>
 </html>

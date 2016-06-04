@@ -1,14 +1,12 @@
 ﻿using LunarSFX.Core.Repositories;
 using LunarSFX.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
 namespace LunarSFX.Controllers
 {
-    public class BlogController : Controller
+    public class BlogController : AppController
     {
         private readonly IBlogRepository _blogRepository;
 
