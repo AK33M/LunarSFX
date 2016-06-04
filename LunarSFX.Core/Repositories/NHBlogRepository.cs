@@ -6,11 +6,11 @@ using NHibernate.Linq;
 
 namespace LunarSFX.Core.Repositories
 {
-    public class BlogRepository : IBlogRepository
+    public class NHBlogRepository : IBlogRepository
     {
         private ISession _session;
 
-        public BlogRepository(ISession session)
+        public NHBlogRepository(ISession session)
         {
             _session = session;
         }

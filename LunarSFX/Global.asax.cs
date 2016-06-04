@@ -15,7 +15,7 @@ namespace LunarSFX
             var kernel = new StandardKernel();
 
             kernel.Load(new RepositoryModule());
-            kernel.Bind<IBlogRepository>().To<BlogRepository>();
+            kernel.Bind<IBlogRepository>().To<EFBlogRepository>();
 
             return kernel;
         }
