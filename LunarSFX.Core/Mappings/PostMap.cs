@@ -92,7 +92,7 @@ namespace LunarSFX.Core.Mappings
             _modelBuilder.Entity<Post>()
                         .HasRequired(x => x.Category)
                         .WithMany(x => x.Posts)
-                        .HasForeignKey(x => x.Category.Id);
+                        .HasForeignKey(x => x.CategoryId);
 
             _modelBuilder.Entity<Post>()
                         .HasMany(x => x.Tags)

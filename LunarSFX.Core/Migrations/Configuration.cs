@@ -10,6 +10,7 @@ namespace LunarSFX.Core.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "LunarSFX.Core.Repositories.LunarSFXDbContext";
         }
 
