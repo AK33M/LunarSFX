@@ -8,6 +8,8 @@ namespace LunarSFX
     {
         public void Configuration(IAppBuilder app)
         {
+           //app.CreatePerOwinContext(ApplicationDbContext.Create);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = "ApplicationCookie",
