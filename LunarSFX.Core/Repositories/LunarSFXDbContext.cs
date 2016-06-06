@@ -1,7 +1,6 @@
 ﻿using LunarSFX.Core.Mappings;
 using LunarSFX.Core.Objects;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace LunarSFX.Core.Repositories
@@ -31,6 +30,11 @@ namespace LunarSFX.Core.Repositories
             tagMap.Map();
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public static LunarSFXDbContext Create()
+        {
+            return new LunarSFXDbContext();
         }
     }
 }

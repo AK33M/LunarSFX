@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace LunarSFX.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : AppController
     {
         private readonly IBlogRepository _blogRepository;

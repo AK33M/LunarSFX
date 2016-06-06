@@ -1,4 +1,6 @@
-﻿using LunarSFX.Providers;
+﻿using LunarSFX.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
 using System.Web.Mvc;
 
@@ -6,11 +8,11 @@ namespace LunarSFX.Controllers
 {
     public abstract class AppController : Controller
     {
-        public AppUser CurrentUser
+        public AppUserPrincipal CurrentUser
         {
             get
             {
-                return new AppUser(this.User as ClaimsPrincipal);
+                return new AppUserPrincipal(this.User as ClaimsPrincipal);          
             }
         }
     }

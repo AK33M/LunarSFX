@@ -1,21 +1,17 @@
-using LunarSFX.Providers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using LunarSFX.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace LunarSFX.Extensions
 {
     public abstract class AppViewPage<TModel> : WebViewPage<TModel>
     {
-        protected AppUser CurrentUser
+        protected AppUserPrincipal CurrentUser
         {
             get
             {
-                return new AppUser(this.User as ClaimsPrincipal);
+                return new AppUserPrincipal(User as ClaimsPrincipal);
             }
         }
     }
