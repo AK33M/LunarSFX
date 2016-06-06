@@ -14,12 +14,6 @@ namespace LunarSFX
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                        "Action",
-                        "{action}",
-                        new { controller = "Blog", action = "Posts" }
-                    );
-
-            routes.MapRoute(
                         "Category",
                         "Category/{category}",
                         new { controller = "Blog", action = "Category" }
@@ -40,8 +34,14 @@ namespace LunarSFX
             routes.MapRoute(
                          "Auth",
                          "Auth/{action}",
-                         new { controller = "Auth", action = "login" }
+                         new { controller = "Auth", action = "LogIn" }
                      );
+
+            routes.MapRoute(
+                        "Action",
+                        "{action}",
+                        new { controller = "Blog", action = "Posts" }
+                    );
 
             //routes.MapRoute(
             //          "Default",
