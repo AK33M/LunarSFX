@@ -38,10 +38,16 @@ namespace LunarSFX
                     );
 
             routes.MapRoute(
-                      "Default",
-                      "{controller}/{action}/{id}",
-                      new { controller = "Blog", action = "Posts", id = UrlParameter.Optional }
-                   );
+                         "Auth",
+                         "Auth/{action}",
+                         new { controller = "Auth", action = "login" }
+                     );
+
+            //routes.MapRoute(
+            //          "Default",
+            //          "{controller}/{action}/{id}",
+            //          new { controller = "Blog", action = "Posts", id = UrlParameter.Optional }
+            //       );
         }
     }
 }
