@@ -30,7 +30,7 @@ namespace LunarSFX.Models
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            //userIdentity.AddClaim(new Claim(ClaimTypes.Country, Country));
+            userIdentity.AddClaim(new Claim(ClaimTypes.Name, UserName));
 
             return userIdentity;
         }
