@@ -9,7 +9,7 @@
     <h4>Log In</h4>
 
     @Html.ValidationSummary(true)
-
+    @Html.AntiForgeryToken()
     @using (Html.BeginForm("LogIn", "Auth", FormMethod.Post, new { @class = "form" }))
     {
         <div class="form-group">

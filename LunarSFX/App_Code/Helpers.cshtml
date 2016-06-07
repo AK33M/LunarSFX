@@ -1,7 +1,12 @@
 ﻿@helper Tags(System.Web.Mvc.HtmlHelper htmlHelper, IList<LunarSFX.Core.Objects.Tag> tags)
 {
-foreach (var tag in tags)
-{
-        @LunarSFX.Extensions.ActionLinkExtensions.TagLink(htmlHelper, tag)
+    foreach (var tag in tags)
+    {
+            @LunarSFX.Extensions.ActionLinkExtensions.TagLink(htmlHelper, tag)
+    }
 }
+
+@helper PostPreview(string blog)
+{
+    @blog.Substring(0, 250)
 }

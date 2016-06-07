@@ -1,7 +1,4 @@
-﻿using LunarSFX.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace LunarSFX.Controllers

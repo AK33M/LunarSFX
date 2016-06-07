@@ -82,27 +82,6 @@ namespace LunarSFX.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
-
-            //if(model.Email == "abc@abc.com" && model.Password == "abc")
-            //{
-            //    var identity = new ClaimsIdentity(new[]
-            //    {
-            //        new Claim(ClaimTypes.Name, "Akeem"),
-            //        new Claim(ClaimTypes.Email, "abc@abc.com"),
-            //        new Claim(ClaimTypes.Country, "Ireland")
-            //    },
-            //    "ApplicationCookie");
-
-            //    var ctx = Request.GetOwinContext();
-            //    var authManager = ctx.Authentication;
-
-            //    authManager.SignIn(identity);
-
-            //    return Redirect(GetRedirectUrl(model.ReturnUrl));
-            //}
-
-            //ModelState.AddModelError("", "Invalid email or password");
-            //return View();
         }
 
         //
