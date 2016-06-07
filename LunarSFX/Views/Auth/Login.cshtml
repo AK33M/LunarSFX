@@ -4,14 +4,40 @@
     ViewBag.Title = "Log in";
 }
 
-<h2>Log In</h2>
 
-@Html.ValidationSummary(true)
+<div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+    <h4>Log In</h4>
 
-@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
-    <p>
-        <button type="submit">Log In</button>
-    </p>
-}
+    @Html.ValidationSummary(true)
+
+    @using (Html.BeginForm("LogIn", "Auth", FormMethod.Post, new { @class = "form" }))
+    {
+        <div class="form-group">
+            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", type = "email", @placeholder = "Email" } })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control", type = "password", @placeholder = "Password" } })
+        </div>
+        <div class="checkbox">
+            <label style="font-size:medium">
+                @Html.EditorFor(x => x.RememberMe) Remember me?
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="pull-left">
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </div>
+            <div class="pull-right">
+                <input type="button" class="btn btn-default" value="Cancel" onclick="history.go(-1);"/>
+            </div>
+        </div>
+    }
+
+    <div style="clear:both">
+        <hr />
+        <div style="font-size:small">
+            <div>@Html.ActionLink("Don't have an account yet? Register Here", "Register")</div>
+            <div>@Html.ActionLink("Forgot your password?", "Register")</div>
+        </div>
+    </div>
+</div>
