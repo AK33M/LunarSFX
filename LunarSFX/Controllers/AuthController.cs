@@ -22,30 +22,6 @@ namespace LunarSFX.Controllers
             _authenticationManager = authenticationManager;
         }
 
-        //public AppSignInManager SignInManager
-        //{
-        //    get
-        //    {
-        //        return _signInManager ?? HttpContext.GetOwinContext().Get<AppSignInManager>();
-        //    }
-        //    private set
-        //    {
-        //        _signInManager = value;
-        //    }
-        //}
-
-        //public AppUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-        //    }
-        //    private set
-        //    {
-        //        _userManager = value;
-        //    }
-        //}
-
         [HttpGet]
         public ActionResult LogIn(string returnUrl)
         {
@@ -53,6 +29,8 @@ namespace LunarSFX.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> LogIn(LogInViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -79,7 +57,6 @@ namespace LunarSFX.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -88,7 +65,6 @@ namespace LunarSFX.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -135,10 +111,11 @@ namespace LunarSFX.Controllers
 
         public ActionResult LogOut()
         {
-            var ctx = Request.GetOwinContext();
-            var authManager = ctx.Authentication;
+            //var ctx = Request.GetOwinContext();
+            _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //var authManager = ctx.Authentication;
 
-            authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Posts", "Blog");
         }
 
