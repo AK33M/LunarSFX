@@ -1,57 +1,50 @@
 using LunarSFX.Models;
 using Microsoft.AspNet.Identity.Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace LunarSFX.Controllers
 {
     [AllowAnonymous]
     public class AuthController : Controller
     {
-        private AppSignInManager _signInManager;
-        private AppUserManager _userManager;
+        private readonly AppSignInManager _signInManager;
+        private readonly AppUserManager _userManager;
+        private readonly IAuthenticationManager _authenticationManager;
 
-        public AuthController()
+        public AuthController(AppUserManager userManager, AppSignInManager signInManager, IAuthenticationManager authenticationManager)
         {
-
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _authenticationManager = authenticationManager;
         }
 
-        public AuthController(AppUserManager userManager, AppSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
+        //public AppSignInManager SignInManager
+        //{
+        //    get
+        //    {
+        //        return _signInManager ?? HttpContext.GetOwinContext().Get<AppSignInManager>();
+        //    }
+        //    private set
+        //    {
+        //        _signInManager = value;
+        //    }
+        //}
 
-        public AppSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<AppSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
-
-        public AppUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+        //public AppUserManager UserManager
+        //{
+        //    get
+        //    {
+        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+        //    }
+        //    private set
+        //    {
+        //        _userManager = value;
+        //    }
+        //}
 
         [HttpGet]
         public ActionResult LogIn(string returnUrl)
@@ -67,7 +60,7 @@ namespace LunarSFX.Controllers
                 return View();
             }
 
-            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
 
             switch (result)
             {
@@ -102,10 +95,10 @@ namespace LunarSFX.Controllers
             if (ModelState.IsValid)
             {
                 var user = new AppUser { UserName = model.UserName, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -166,13 +159,13 @@ namespace LunarSFX.Controllers
                 if (_userManager != null)
                 {
                     _userManager.Dispose();
-                    _userManager = null;
+                    //_userManager = null;
                 }
 
                 if (_signInManager != null)
                 {
                     _signInManager.Dispose();
-                    _signInManager = null;
+                   // _signInManager = null;
                 }
             }
 
