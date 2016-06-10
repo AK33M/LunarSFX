@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Resources;
 
 namespace LunarSFX.Controllers
 {
@@ -37,6 +38,10 @@ namespace LunarSFX.Controllers
             {
                 return View();
             }
+            
+
+            ViewBag.Greeting1 = HttpContext.GetGlobalResourceObject("Labels", "Greeting");
+            ViewBag.Greeting2 = LunarSFX.Resources.Labels.Greeting;
 
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
 

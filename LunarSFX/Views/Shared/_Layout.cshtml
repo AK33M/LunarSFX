@@ -24,10 +24,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("LunarSFX", "Posts","Blog", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("LunarSFX", "Posts", "Blog", null, new { @class = "navbar-brand" })
                 @if (Request.IsAuthenticated)
                 {
-                    <span class="navbar-brand">Hello @CurrentUser.Name</span>
+                    <span class="navbar-brand">@ViewBag.Greeting @CurrentUser.Name</span>
+                }
+                else
+                {
+                    @*<span class="navbar-brand">@Abuse</span>*@
                 }
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -115,6 +119,6 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("scripts", false)
-   @* <script src="@Url.Content("~/Scripts/app.js")"></script>*@
+    @* <script src="@Url.Content("~/Scripts/app.js")"></script>*@
 </body>
 </html>
