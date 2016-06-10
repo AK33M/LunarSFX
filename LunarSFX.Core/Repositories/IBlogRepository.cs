@@ -10,7 +10,8 @@ namespace LunarSFX.Core.Repositories
     public interface IBlogRepository
     {
         IList<Post> Posts(int pageNo, int pageSize);
-        int TotalPosts();
+        IList<Post> Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending);
+        int TotalPosts(bool checkIsPublished = true);
         IList<Post> PostsForCategory(string categorySlug, int pageNo, int pageSize);
         int TotalPostsForCategory(string categorySlug);
         Category Category(string categorySlug);

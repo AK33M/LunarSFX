@@ -1,34 +1,11 @@
-using FluentNHibernate.Mapping;
 using LunarSFX.Core.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 
 namespace LunarSFX.Core.Mappings
 {
-    public class CategoryMap//: ClassMap<Category>
+    public class CategoryMap
     {
         private DbModelBuilder _modelBuilder;
-
-        //public CategoryMap()
-        //{
-        //    Id(x => x.Id);
-        //    Map(x => x.Name)
-        //        .Length(50)
-        //        .Not.Nullable();
-        //    Map(x => x.UrlSlug)
-        //        .Length(50)
-        //        .Not.Nullable();
-        //    Map(x => x.Description)
-        //        .Length(200);
-        //    HasMany(x => x.Posts)
-        //        .Inverse()
-        //        .Cascade.All()
-        //        .KeyColumn("Category");
-        //}
 
         public CategoryMap(DbModelBuilder modelBuilder)
         {

@@ -12,10 +12,46 @@
 
     @Styles.Render("~/styles/jqueryui")
     @Styles.Render("~/styles/jqueryui/custom")
+    @Styles.Render("~/styles/jqgrid")
+    @Styles.Render("~/styles/admin")
 </head>
 <body>
     <div> 
+        <!-- tab control -->
+        <div id="tabs">
+
+            <!-- tab titles -->
+            <ul>
+                <li><a href="#tab-posts">Posts</a></li>
+                <li><a href="#tab-cats">Categories</a></li>
+                <li><a href="#tab-tags">Tags</a></li>
+            </ul>
+
+            <!-- tab that contains grid to display posts -->
+            <div id="tab-posts" class="tab">
+                <table id="tablePosts" class="grid"></table>
+                <div id="pagerPosts" class="pager">
+                </div>
+            </div>
+
+            <!-- tab that contains grid to display categories -->
+            <div id="tab-cats" class="tab">
+                <table id="tableCats" class="grid"></table>
+                <div id="pagerCats" class="pager">
+                </div>
+            </div>
+
+            <!-- tab that contains grid to display tags -->
+            <div id="tab-tags" class="tab">
+                <table id="tableTags" class="grid"></table>
+                <div id="pagerTags" class="pager">
+                </div>
+            </div>
+        </div>
     </div>
     @Scripts.Render("~/scripts/jquery")
+    @Scripts.Render("~/scripts/jqgrid")
+    @Scripts.Render("~/scripts/tinymce")
+    @Scripts.Render("~/scripts/admin")
 </body>
 </html>

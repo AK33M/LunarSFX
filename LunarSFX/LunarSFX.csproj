@@ -183,6 +183,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\admin.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -198,6 +199,9 @@
     <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
     <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\styles\jqgrid\ui.jqgrid-bootstrap-ui.css" />
+    <Content Include="Content\styles\jqgrid\ui.jqgrid-bootstrap.css" />
+    <Content Include="Content\styles\jqgrid\ui.jqgrid.css" />
     <Content Include="Content\styles\jqueryui\jquery-ui.css" />
     <Content Include="Content\styles\jqueryui\jquery-ui.min.css" />
     <Content Include="Content\styles\jqueryui\jquery-ui.structure.css" />
@@ -242,7 +246,10 @@
     <Content Include="Images\home-bg.jpg" />
     <Content Include="Images\post-bg.jpg" />
     <Content Include="Images\post-sample-image.jpg" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\jqgrid\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\jqgrid\jquery.jqGrid.min.js" />
     <Content Include="Scripts\jqueryui\jquery-ui.js" />
     <Content Include="Scripts\jqueryui\jquery-ui.min.js" />
     <Content Include="Scripts\js\bootstrap.js" />
@@ -251,6 +258,8 @@
     <Content Include="Scripts\js\clean-blog.min.js" />
     <Content Include="Scripts\js\jquery.js" />
     <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -269,12 +278,14 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Extensions\ActionLinkExtensions.cs" />
     <Compile Include="Extensions\AppViewPage.cs" />
+    <Compile Include="Extensions\CustomDateTimeConverter.cs" />
     <Compile Include="Extensions\UIExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModel.cs" />
+    <Compile Include="Models\JqInViewModel.cs" />
     <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\WidgetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

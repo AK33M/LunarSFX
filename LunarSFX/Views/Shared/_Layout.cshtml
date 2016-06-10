@@ -44,6 +44,10 @@
                     {
                         <li>@Html.ActionLink("Log Out", "LogOut", "Auth")</li>
                     }
+                    @if (CurrentUser.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Manage", "Admin")</li>
+                    }
                     <li>@Html.ActionLink("Contact Us", "Posts", "Blog")</li>
                     <li>@Html.ActionLink("About Us", "Posts", "Blog")</li>
                 </ul>
