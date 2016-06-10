@@ -16,22 +16,22 @@ namespace LunarSFX.Extensions
             }
         }
 
-        protected string Greeting
-        {
-            get
-            {
-                //return HttpContext.GetGlobalResourceObject("Labels", "Greeting", new System.Globalization.CultureInfo("en")).ToString();
-                return Resources.Labels.Greeting;
-            }
-        }
-        protected string Abuse
-        {
-            get
-            {
-                //return HttpContext.GetGlobalResourceObject("Labels", "Abuse", new System.Globalization.CultureInfo("en")).ToString();
-                return Resources.Labels.Abuse;
-            }
-        }
+        //protected string Greeting
+        //{
+        //    get
+        //    {
+        //        //return HttpContext.GetGlobalResourceObject("Labels", "Greeting", new System.Globalization.CultureInfo("en")).ToString();
+        //        return Resources.Labels.Greeting;
+        //    }
+        //}
+        //protected string Abuse
+        //{
+        //    get
+        //    {
+        //        //return HttpContext.GetGlobalResourceObject("Labels", "Abuse", new System.Globalization.CultureInfo("en")).ToString();
+        //        return Resources.Labels.Abuse;
+        //    }
+        //}
     }
 
     public abstract class AppViewPage : AppViewPage<dynamic>

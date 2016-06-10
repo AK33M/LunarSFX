@@ -40,8 +40,8 @@ namespace LunarSFX.Controllers
             }
             
 
-            ViewBag.Greeting1 = HttpContext.GetGlobalResourceObject("Labels", "Greeting");
-            ViewBag.Greeting2 = LunarSFX.Resources.Labels.Greeting;
+            //ViewBag.Greeting1 = HttpContext.GetGlobalResourceObject("Labels", "Greeting");
+            //ViewBag.Greeting2 = LunarSFX.Resources.Labels.Greeting;
 
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
 
