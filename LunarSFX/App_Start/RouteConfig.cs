@@ -15,7 +15,7 @@ namespace LunarSFX
 
             routes.MapRoute(
                         "Manage",
-                        "Manage",
+                        "Manage/{action}",
                         new { controller = "Admin", action = "Manage" }
                     );
 
