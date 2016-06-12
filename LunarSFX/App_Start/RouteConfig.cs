@@ -14,8 +14,8 @@ namespace LunarSFX
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                        "Manage",
-                        "Manage/{action}",
+                        "Admin",
+                        "Admin/{action}",
                         new { controller = "Admin", action = "Manage" }
                     );
 

@@ -249,6 +249,7 @@
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\jqgrid\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\jqgrid\jquery.jqGrid.js" />
     <Content Include="Scripts\jqgrid\jquery.jqGrid.min.js" />
     <Content Include="Scripts\jqueryui\jquery-ui.js" />
     <Content Include="Scripts\jqueryui\jquery-ui.min.js" />

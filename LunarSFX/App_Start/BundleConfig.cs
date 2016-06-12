@@ -6,6 +6,8 @@ namespace LunarSFX
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/js/modernizr-*"));
+
             bundles.Add(new ScriptBundle("~/bundles/js").IncludeDirectory("~/Scripts", "*.js", true));
             bundles.Add(new StyleBundle("~/Content/clean/css").IncludeDirectory("~/Content/themes/clean", "*.css"));
 
@@ -15,7 +17,8 @@ namespace LunarSFX
             bundles.Add(new StyleBundle("~/styles/jqueryui").IncludeDirectory("~/Content/styles/jqueryui", "*.css"));
             bundles.Add(new StyleBundle("~/styles/jqueryui/custom").IncludeDirectory("~/Content/sunny", "*.css"));
 
-            bundles.Add(new ScriptBundle("~/scripts/jqgrid").IncludeDirectory("~/Scripts/jqgrid", "*.js", true));
+            bundles.Add(new ScriptBundle("~/scripts/jqgrid").Include("~/Scripts/jqgrid/i18n/grid.locale-en.js", "~/Scripts/jqgrid/jquery.jqGrid.js"));
+
             bundles.Add(new StyleBundle("~/styles/jqgrid").IncludeDirectory("~/Content/styles/jqgrid", "*.css"));
 
             bundles.Add(new ScriptBundle("~/scripts/tinymce").Include("~/Scripts/tinymce/jquery.tinymce.min.js", "~/Scripts/tinymce/tinymce.min.js"));

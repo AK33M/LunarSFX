@@ -3,9 +3,6 @@ using LunarSFX.Extensions;
 using LunarSFX.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LunarSFX.Controllers
@@ -40,9 +37,5 @@ namespace LunarSFX.Controllers
                 total = Math.Ceiling(Convert.ToDouble(totalPosts) / jqParams.rows)
             }, new CustomDateTimeConverter()), "application/Json");
         }
-    }
-
-    public class BlogRepository
-    {
     }
 }

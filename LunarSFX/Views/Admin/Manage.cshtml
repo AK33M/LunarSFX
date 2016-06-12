@@ -31,6 +31,7 @@
             <div id="tab-posts" class="tab">
                 <table id="tablePosts" class="grid"></table>
                 <div id="pagerPosts" class="pager">
+                    
                 </div>
             </div>
 
@@ -49,9 +50,22 @@
             </div>
         </div>
     </div>
+
     @Scripts.Render("~/scripts/jquery")
+    <script type="text/javascript">
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                $.browser.msie = true;
+                $.browser.version = RegExp.$1;
+            }
+        })();
+    </script>
     @Scripts.Render("~/scripts/jqgrid")
     @Scripts.Render("~/scripts/tinymce")
     @Scripts.Render("~/scripts/admin")
+
 </body>
 </html>

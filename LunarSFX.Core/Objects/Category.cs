@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace LunarSFX.Core.Objects
 {
@@ -8,6 +9,7 @@ namespace LunarSFX.Core.Objects
         public virtual string Name { get; set; }
         public virtual string UrlSlug { get; set; }
         public virtual string Description { get; set; }
+        [JsonIgnore]
         public virtual IList<Post> Posts { get; set; }
     }
 }
