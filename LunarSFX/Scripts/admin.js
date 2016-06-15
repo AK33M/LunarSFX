@@ -6,7 +6,17 @@ $(function () {
 
         // function to create grid to manage posts
         postsGrid: function(gridName, pagerName) {
- 
+
+            var afterShowForm = function (form) {
+                tinymce.execCommand('mceAddEditor', false, 'ShortDescription');
+                tinymce.execCommand('mceAddEditor', false, 'Description');
+            };
+
+            var onClose = function (form) {
+                tinymce.execCommand('mceRemoveEditor', false, 'ShortDescription');
+                tinymce.execCommand('mceRemoveEditor', false, 'Description');
+            };
+
             // columns
             var colNames = [
                 'Id',
@@ -222,16 +232,6 @@ $(function () {
                 jsonReader: { repeatitems: false }
             });
 
-            var afterShowForm = function (form) {
-                tinyMCE.execCommand('mceAddControl', false, 'ShortDescription');
-                tinyMCE.execCommand('mceAddControl', false, 'Description');
-            };
-
-            var onClose = function (form) {
-                tinyMCE.execCommand('mceRemoveControl', false, 'ShortDescription');
-                tinyMCE.execCommand('mceRemoveControl', false, 'Description');
-            };
-
             // configuring add options
             var addOptions = {
                 url: '/Admin/AddPost',
@@ -287,7 +287,7 @@ $(function () {
                         default:
                             fn = gdMgr.postsGrid;
                             gridName = "#tablePosts";
-                            pagerName = "#pagerPosts";                            
+                            pagerName = "#pagerPosts";
                             break;
                         case 1:
                             fn = gdMgr.categoriesGrid;
@@ -303,7 +303,11 @@ $(function () {
 
                     fn(gridName, pagerName);
                     isLoaded = true;
-            }
+                }
+            },
+        activate: function (event, ui) {
+            var gdMgr = LunarSFX.GridManager;
+            gdMgr.postsGrid;
         }
-    });   
+    });
 }());
