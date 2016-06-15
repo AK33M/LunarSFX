@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace LunarSFX.Core.Objects
 {
     public class Post
     {
+        [Required]
         public virtual int Id { get; set; }
         public virtual string Title { get; set; }
         public virtual string ShortDescription { get; set; }

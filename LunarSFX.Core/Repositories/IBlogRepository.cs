@@ -23,5 +23,6 @@ namespace LunarSFX.Core.Repositories
         Post Post(int year, int month, string titleSlug);
         IList<Category> Categories();
         IList<Tag> Tags();
+        int AddPost(Post post);
     }
 }

@@ -1,4 +1,5 @@
-﻿using LunarSFX.Core.Repositories;
+﻿using LunarSFX.Core.Objects;
+using LunarSFX.Core.Repositories;
 using LunarSFX.Extensions;
 using LunarSFX.Models;
 using Newtonsoft.Json;
@@ -36,6 +37,35 @@ namespace LunarSFX.Controllers
                 rows = posts,
                 total = Math.Ceiling(Convert.ToDouble(totalPosts) / jqParams.rows)
             }, new CustomDateTimeConverter()), "application/Json");
+        }
+
+        [HttpPost]
+        public ContentResult AddPost(Post post)
+        {
+            string json;
+
+            if (ModelState.IsValid)
+            {
+                var id = _blogRepository.AddPost(post);
+
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = id,
+                    success = true,
+                    message = "Post added successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to add the post."
+                });
+            }
+
+            return Content(json, "application/json");
         }
     }
 }

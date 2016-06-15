@@ -15,6 +15,14 @@ namespace LunarSFX.Core.Repositories
         {
             _context = context;
         }
+
+        public int AddPost(Post post)
+        {
+            _context.Posts.Add(post);
+            _context.SaveChanges();
+            return post.Id;            
+        }
+
         public IList<Category> Categories()
         {
             return _context.Categories.OrderBy(p => p.Name).ToList();
