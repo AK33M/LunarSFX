@@ -244,6 +244,7 @@ $(function () {
                 bSubmit: "Submit",
                 afterShowForm: afterShowForm,
                 onClose: onClose,
+                bExit: 'Cancel'
             };
 
             $(gridName).navGrid(pagerName,

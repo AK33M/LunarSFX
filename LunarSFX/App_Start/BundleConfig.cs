@@ -17,7 +17,7 @@ namespace LunarSFX
             bundles.Add(new StyleBundle("~/styles/jqueryui").IncludeDirectory("~/Content/styles/jqueryui", "*.css"));
             bundles.Add(new StyleBundle("~/styles/jqueryui/custom").IncludeDirectory("~/Content/sunny", "*.css"));
 
-            bundles.Add(new ScriptBundle("~/scripts/jqgrid").Include("~/Scripts/jqgrid/i18n/grid.locale-en.js", "~/Scripts/jqgrid/jquery.jqGrid.js"));
+            bundles.Add(new ScriptBundle("~/scripts/jqgrid").Include("~/Scripts/jqgrid/jquery.jqGrid.js","~/Scripts/jqgrid/i18n/grid.locale-en.js"));
 
             bundles.Add(new StyleBundle("~/styles/jqgrid").IncludeDirectory("~/Content/styles/jqgrid", "*.css"));
 
