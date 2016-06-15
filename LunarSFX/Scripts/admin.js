@@ -34,26 +34,62 @@ $(function () {
             columns.push({
                 name: 'Title',
                 index: 'Title',
-                width: 250
+                width: 250,
+                editable: true,
+                editoptions: {
+                    size: 43,
+                    maxlength: 500
+                },
+                editrules: {
+                    required: true
+                }
             });
  
             columns.push({
                 name: 'ShortDescription',
                 width: 250,
                 sortable: false,
-                hidden: true
+                hidden: true,
+                editable: true,
+                edittype: 'textarea',
+                editoptions: {
+                    rows: "10",
+                    cols: "100"
+                },
+                editrules: {
+                    edithidden: true
+                }
             });
  
             columns.push({
                 name: 'Description',
                 width: 250,
                 sortable: false,
-                hidden: true
+                hidden: true,
+                editable: true,
+                edittype: 'textarea',
+                editoptions: {
+                    rows: "40",
+                    cols: "100"
+                },
+                editrules: {
+                    edithidden: true
+                }
             });
  
             columns.push({
                 name: 'Category.Id',
-                hidden: true
+                hidden: true,
+                editable: true,
+                edittype: 'select',
+                editoptions: {
+                    style: 'width:250px;',
+                    dataUrl: '/Admin/GetCategoriesHtml'
+                },
+                editrules: {
+                    required: true,
+                    edithidden: true
+                }
             });
  
             columns.push({
@@ -64,26 +100,60 @@ $(function () {
  
             columns.push({
                 name: 'Tags',
-                width: 150
+                width: 150,
+                editable: true,
+                edittype: 'select',
+                editoptions: {
+                    style: 'width:250px;',
+                    dataUrl: '/Admin/GetTagsHtml',
+                    multiple: true
+                },
+                editrules: {
+                    required: true
+                }
             });
  
             columns.push({
                 name: 'Meta',
                 width: 250,
-                sortable: false
+                sortable: false,
+                editable: true,
+                edittype: 'textarea',
+                editoptions: {
+                    rows: "2",
+                    cols: "40",
+                    maxlength: 1000
+                },
+                editrules: {
+                    required: true
+                }
             });
  
             columns.push({
                 name: 'UrlSlug',
                 width: 200,
-                sortable: false
+                sortable: false,
+                editable: true,
+                editoptions: {
+                    size: 43,
+                    maxlength: 200
+                },
+                editrules: {
+                    required: true
+                }
             });
  
             columns.push({
                 name: 'Published',
                 index: 'Published',
                 width: 100,
-                align: 'center'
+                align: 'center',
+                editable: true,
+                edittype: 'checkbox',
+                editoptions: {
+                    value: "true:false",
+                    defaultValue: 'false'
+                }
             });
  
             columns.push({
@@ -103,22 +173,21 @@ $(function () {
                 sorttype: 'date',
                 datefmt: 'm/d/Y'
             });
- 
+
             // create the grid
             $(gridName).jqGrid({
                 // server url and other ajax stuff
                 url: '/Admin/Posts',
                 datatype: 'json',
                 mtype: 'GET',
- 
                 height: 'auto',
+                toppager: true,
  
                 // columns
                 colNames: colNames,
                 colModel: columns,
  
                 // pagination options
-                toppager: true,
                 pager: pagerName,
                 rowNum: 10,
                 rowList: [10, 20, 30],
@@ -152,6 +221,47 @@ $(function () {
  
                 jsonReader: { repeatitems: false }
             });
+
+            var afterShowForm = function (form) {
+                tinyMCE.execCommand('mceAddControl', false, 'ShortDescription');
+                tinyMCE.execCommand('mceAddControl', false, 'Description');
+            };
+
+            var onClose = function (form) {
+                tinyMCE.execCommand('mceRemoveControl', false, 'ShortDescription');
+                tinyMCE.execCommand('mceRemoveControl', false, 'Description');
+            };
+
+            // configuring add options
+            var addOptions = {
+                url: '/Admin/AddPost',
+                addCaption: 'Add Post',
+                processData: "Saving...",
+                width: 900,
+                closeAfterAdd: true,
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Submit",
+                afterShowForm: afterShowForm,
+                onClose: onClose,
+            };
+
+            $(gridName).navGrid(pagerName,
+                                {
+                                    addtext: 'add',
+                                    addtitle: 'add blog post',
+                                    deltext: 'delete',
+                                    deltitle: 'delete blog post',
+                                    edittext: 'edit',
+                                    edittitle: 'edit blog post',
+                                    refreshtext: 'refresh',
+                                    refreshtitle: 'refresh list',
+                                    cloneToTop: true,
+                                    search: false
+                                },
+                                {},
+                                addOptions,
+                                {});
         },
 
         // function to create grid to manage categories
