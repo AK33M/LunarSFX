@@ -25,7 +25,10 @@ namespace LunarSFX
             var _blogRepository = _container.GetInstance<IBlogRepository>();
 
             if (post.Category != null)
+            {
                 post.Category = _blogRepository.Category(post.Category.Id);
+                post.CategoryId = post.Category.Id;
+            }
 
             var tags = bindingContext.ValueProvider.GetValue("Tags").AttemptedValue.Split(',');
 

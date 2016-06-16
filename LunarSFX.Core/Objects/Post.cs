@@ -27,6 +27,6 @@ namespace LunarSFX.Core.Objects
         public virtual DateTime? Modified { get; set; }
         public virtual Category Category { get; set; }
         public virtual IList<Tag> Tags { get; set; }
-        public virtual int CategoryId { get; internal set; }
+        public virtual int CategoryId { get; set; }
     }
 }

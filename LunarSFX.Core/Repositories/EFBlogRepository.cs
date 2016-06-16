@@ -25,14 +25,8 @@ namespace LunarSFX.Core.Repositories
 
         public void EditPost(Post post)
         {
-            var p = Post(post.Id);
-
-            if (p != null)
-            {
-                p = post;
-                _context.Entry(p).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-            }
+            _context.Entry(post).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public Post Post(int id)

@@ -7,6 +7,11 @@ $(function () {
         // function to create grid to manage posts
         postsGrid: function (gridName, pagerName) {
 
+            var afterclickPgButtons = function (whichbutton, formid, rowid) {
+                tinymce.get("ShortDescription").setContent(formid[0]["ShortDescription"].value);
+                tinymce.get("Description").setContent(formid[0]["Description"].value);
+            };
+
             var afterShowForm = function (form) {
                 tinymce.execCommand('mceAddEditor', false, 'ShortDescription');
                 tinymce.execCommand('mceAddEditor', false, 'Description');
@@ -272,6 +277,24 @@ $(function () {
                 beforeSubmit: beforeSubmitHandler
             };
 
+            // configuring the edit options
+            var editOptions = {
+                url: '/Admin/EditPost',
+                editCaption: 'Edit Post',
+                processData: "Saving...",
+                width: 1000,
+                closeAfterEdit: true,
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Submit",
+                bExit: 'Cancel',
+                afterclickPgButtons: afterclickPgButtons,
+                afterShowForm: afterShowForm,
+                onClose: onClose,
+                afterSubmit: LunarSFX.GridManager.afterSubmitHandler,
+                beforeSubmit: beforeSubmitHandler
+            };
+
             $(gridName).navGrid(pagerName,
                                 {
                                     addtext: 'add',
@@ -285,7 +308,7 @@ $(function () {
                                     cloneToTop: true,
                                     search: false
                                 },
-                                {},
+                                editOptions,
                                 addOptions,
                                 {});
         },
