@@ -185,6 +185,20 @@ namespace LunarSFX.Controllers
             return Content(json, "application/json");
         }
 
+        [HttpPost]
+        public ContentResult DeleteCategory(int id)
+        {
+            _blogRepository.DeleteCategory(id);
+
+            var json = JsonConvert.SerializeObject(new
+            {
+                id = 0,
+                success = true,
+                message = "Category deleted successfully."
+            });
+
+            return Content(json, "application/json");
+        }
 
         public ContentResult GetCategoriesHtml()
         {

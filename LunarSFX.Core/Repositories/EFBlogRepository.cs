@@ -68,6 +68,13 @@ namespace LunarSFX.Core.Repositories
             _context.SaveChanges();
         }
 
+        public void DeleteCategory(int id)
+        {
+            var category = Category(id);
+            _context.Entry(category).State = System.Data.Entity.EntityState.Deleted;
+            _context.SaveChanges();
+        }
+
         public Post Post(int year, int month, string titleSlug)
         {
             return _context.Posts.Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug)).Single();

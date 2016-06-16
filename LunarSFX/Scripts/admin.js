@@ -376,6 +376,19 @@ $(function () {
                     return [false, "Failed to get result from server.", null];
                 }
             };
+
+            var deleteOptions = {
+                url: '/Admin/DeleteCategory',
+                caption: 'Delete Category',
+                processData: "Saving...",
+                width: 500,
+                msg: "Delete the category? This will delete all the posts belongs to this category as well.",
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Delete",
+                bExit: 'Cancel',
+                afterSubmit: LunarSFX.GridManager.afterSubmitHandler
+            };
  
             columns.push({
                 name: 'Id',
@@ -466,7 +479,7 @@ $(function () {
                 cloneToTop: true,
                 search: false
             },
-            editOptions, addOptions, {});
+            editOptions, addOptions, deleteOptions);
         },
 
         // function to create grid to manage tags
