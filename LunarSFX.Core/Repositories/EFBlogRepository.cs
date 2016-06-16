@@ -28,6 +28,12 @@ namespace LunarSFX.Core.Repositories
             _context.Entry(post).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
         }
+        public void DeletePost(int id)
+        {
+            var post = Post(id);
+            _context.Entry(post).State = System.Data.Entity.EntityState.Deleted;
+            _context.SaveChanges();
+        }
 
         public Post Post(int id)
         {

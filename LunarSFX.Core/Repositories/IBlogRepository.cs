@@ -28,5 +28,6 @@ namespace LunarSFX.Core.Repositories
         Tag Tag(int id);
         Post Post(int id);
         void EditPost(Post post);
+        void DeletePost(int id);
     }
 }

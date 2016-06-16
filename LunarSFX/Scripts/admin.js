@@ -295,6 +295,19 @@ $(function () {
                 beforeSubmit: beforeSubmitHandler
             };
 
+            // configuring the delete options
+            var deleteOptions = {
+                url: '/Admin/DeletePost',
+                caption: 'Delete Post',
+                processData: "Saving...",
+                msg: "Delete the Post?",
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Delete",
+                bExit: 'Cancel',
+                afterSubmit: LunarSFX.GridManager.afterSubmitHandler
+            };
+
             $(gridName).navGrid(pagerName,
                                 {
                                     addtext: 'add',
@@ -310,7 +323,7 @@ $(function () {
                                 },
                                 editOptions,
                                 addOptions,
-                                {});
+                                deleteOptions);
         },
 
 
