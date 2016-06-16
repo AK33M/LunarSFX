@@ -26,5 +26,7 @@ namespace LunarSFX.Core.Repositories
         int AddPost(Post post);
         Category Category(int id);
         Tag Tag(int id);
+        Post Post(int id);
+        void EditPost(Post post);
     }
 }

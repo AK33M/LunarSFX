@@ -70,6 +70,36 @@ namespace LunarSFX.Controllers
 
             return Content(json, "application/json");
         }
+
+        [HttpPost, ValidateInput(false)]
+        public ContentResult EditPost(Post post)
+        {
+            string json;
+
+            ModelState.Clear();
+
+            if (TryValidateModel(post))
+            {
+                _blogRepository.EditPost(post);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = post.Id,
+                    success = true,
+                    message = "Changes saved successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to save the changes."
+                });
+            }
+
+            return Content(json, "application/json");
+        }
         public ContentResult GetCategoriesHtml()
         {
             var categories = _blogRepository.Categories();

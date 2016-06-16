@@ -23,6 +23,23 @@ namespace LunarSFX.Core.Repositories
             return post.Id;            
         }
 
+        public void EditPost(Post post)
+        {
+            var p = Post(post.Id);
+
+            if (p != null)
+            {
+                p = post;
+                _context.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                _context.SaveChanges();
+            }
+        }
+
+        public Post Post(int id)
+        {
+            return _context.Posts.FirstOrDefault(p => p.Id == id);
+        }
+
         public IList<Category> Categories()
         {
             return _context.Categories.OrderBy(p => p.Name).ToList();
