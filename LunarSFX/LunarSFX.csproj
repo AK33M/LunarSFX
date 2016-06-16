@@ -356,6 +356,7 @@
     <Compile Include="Extensions\ActionLinkExtensions.cs" />
     <Compile Include="Extensions\AppViewPage.cs" />
     <Compile Include="Extensions\CustomDateTimeConverter.cs" />
+    <Compile Include="Extensions\PostModelBinder.cs" />
     <Compile Include="Extensions\UIExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

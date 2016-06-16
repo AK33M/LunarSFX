@@ -5,7 +5,7 @@ $(function () {
     LunarSFX.GridManager = {
 
         // function to create grid to manage posts
-        postsGrid: function(gridName, pagerName) {
+        postsGrid: function (gridName, pagerName) {
 
             var afterShowForm = function (form) {
                 tinymce.execCommand('mceAddEditor', false, 'ShortDescription');
@@ -15,6 +15,16 @@ $(function () {
             var onClose = function (form) {
                 tinymce.execCommand('mceRemoveEditor', false, 'ShortDescription');
                 tinymce.execCommand('mceRemoveEditor', false, 'Description');
+            };
+
+            var beforeSubmitHandler = function (postdata, form) {
+                var selRowData = $(gridName).getRowData($(gridName).getGridParam('selrow'));
+                if (selRowData["PostedOn"])
+                    postdata.PostedOn = selRowData["PostedOn"];
+                postdata.ShortDescription = tinymce.get("ShortDescription").getContent();
+                postdata.Description = tinymce.get("Description").getContent();
+
+                return [true];
             };
 
             // columns
@@ -32,15 +42,15 @@ $(function () {
                 'Posted On',
                 'Modified'
             ];
- 
+
             var columns = [];
- 
+
             columns.push({
                 name: 'Id',
                 hidden: true,
                 key: true
             });
- 
+
             columns.push({
                 name: 'Title',
                 index: 'Title',
@@ -54,7 +64,7 @@ $(function () {
                     required: true
                 }
             });
- 
+
             columns.push({
                 name: 'ShortDescription',
                 width: 250,
@@ -67,10 +77,16 @@ $(function () {
                     cols: "100"
                 },
                 editrules: {
+                    custom: true,
+                    custom_func: function (val, colname) {
+                        val = tinymce.get("ShortDescription").getContent();
+                        if (val) return [true, ""];
+                        return [false, colname + ": Field is required"];
+                    },
                     edithidden: true
                 }
             });
- 
+
             columns.push({
                 name: 'Description',
                 width: 250,
@@ -83,10 +99,17 @@ $(function () {
                     cols: "100"
                 },
                 editrules: {
+                    custom: true,
+
+                    custom_func: function (val, colname) {
+                        val = tinymce.get("Description").getContent();
+                        if (val) return [true, ""];
+                        return [false, colname + ": Field is requred"];
+                    },
                     edithidden: true
                 }
             });
- 
+
             columns.push({
                 name: 'Category.Id',
                 hidden: true,
@@ -101,13 +124,13 @@ $(function () {
                     edithidden: true
                 }
             });
- 
+
             columns.push({
                 name: 'Category.Name',
                 index: 'Category',
                 width: 150
             });
- 
+
             columns.push({
                 name: 'Tags',
                 width: 150,
@@ -122,7 +145,7 @@ $(function () {
                     required: true
                 }
             });
- 
+
             columns.push({
                 name: 'Meta',
                 width: 250,
@@ -138,7 +161,7 @@ $(function () {
                     required: true
                 }
             });
- 
+
             columns.push({
                 name: 'UrlSlug',
                 width: 200,
@@ -152,7 +175,7 @@ $(function () {
                     required: true
                 }
             });
- 
+
             columns.push({
                 name: 'Published',
                 index: 'Published',
@@ -165,7 +188,7 @@ $(function () {
                     defaultValue: 'false'
                 }
             });
- 
+
             columns.push({
                 name: 'PostedOn',
                 index: 'PostedOn',
@@ -174,7 +197,7 @@ $(function () {
                 sorttype: 'date',
                 datefmt: 'm/d/Y'
             });
- 
+
             columns.push({
                 name: 'Modified',
                 index: 'Modified',
@@ -192,24 +215,24 @@ $(function () {
                 mtype: 'GET',
                 height: 'auto',
                 toppager: true,
- 
+
                 // columns
                 colNames: colNames,
                 colModel: columns,
- 
+
                 // pagination options
                 pager: pagerName,
                 rowNum: 10,
                 rowList: [10, 20, 30],
- 
+
                 // row number column
                 rownumbers: true,
                 rownumWidth: 40,
- 
+
                 // default sorting
                 sortname: 'PostedOn',
                 sortorder: 'desc',
- 
+
                 // display the no. of records message
                 viewrecords: true,
 
@@ -219,16 +242,16 @@ $(function () {
                 afterInsertRow: function (rowid, rowdata, rowelem) {
                     var tags = rowdata["Tags"];
                     var tagStr = "";
- 
-                    $.each(tags, function(i, t){
-                        if(tagStr) tagStr += ", "
+
+                    $.each(tags, function (i, t) {
+                        if (tagStr) tagStr += ", "
                         tagStr += t.Name;
                     });
- 
- 
+
+
                     $(gridName).setRowData(rowid, { "Tags": tagStr });
                 },
- 
+
                 jsonReader: { repeatitems: false }
             });
 
@@ -237,14 +260,16 @@ $(function () {
                 url: '/Admin/AddPost',
                 addCaption: 'Add Post',
                 processData: "Saving...",
-                width: 900,
+                width: 1000,
                 closeAfterAdd: true,
                 closeOnEscape: true,
                 bCancel: "Cancel",
                 bSubmit: "Submit",
+                bExit: 'Cancel',
                 afterShowForm: afterShowForm,
                 onClose: onClose,
-                bExit: 'Cancel'
+                afterSubmit: LunarSFX.GridManager.afterSubmitHandler,
+                beforeSubmit: beforeSubmitHandler
             };
 
             $(gridName).navGrid(pagerName,
@@ -265,12 +290,23 @@ $(function () {
                                 {});
         },
 
+
+
         // function to create grid to manage categories
         categoriesGrid: function (gridName, pagerName) {
         },
 
         // function to create grid to manage tags
         tagsGrid: function (gridName, pagerName) {
+        },
+
+        afterSubmitHandler: function (response, postdata) {
+
+            var json = $.parseJSON(response.responseText);
+
+            if (json) return [json.success, json.message, json.id];
+
+            return [false, "Failed to get result from server.", null];
         }
     };
 

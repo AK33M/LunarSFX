@@ -40,12 +40,14 @@ namespace LunarSFX.Controllers
             }, new CustomDateTimeConverter()), "application/Json");
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ContentResult AddPost(Post post)
         {
             string json;
 
-            if (ModelState.IsValid)
+            ModelState.Clear();
+
+            if (TryValidateModel(post))
             {
                 var id = _blogRepository.AddPost(post);
 
