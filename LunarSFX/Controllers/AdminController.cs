@@ -157,6 +157,35 @@ namespace LunarSFX.Controllers
             return Content(json, "application/json");
         }
 
+        [HttpPost]
+        public ContentResult EditCategory(Category category)
+        {
+            string json;
+
+            if (ModelState.IsValid)
+            {
+                _blogRepository.EditCategory(category);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = category.Id,
+                    success = true,
+                    message = "Changes saved successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to save the changes."
+                });
+            }
+
+            return Content(json, "application/json");
+        }
+
+
         public ContentResult GetCategoriesHtml()
         {
             var categories = _blogRepository.Categories();

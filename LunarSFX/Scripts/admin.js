@@ -354,6 +354,28 @@ $(function () {
                     return [false, "Failed to get result from server.", null];
                 }
             };
+
+            var editOptions = {
+                url: '/Admin/EditCategory',
+                width: 400,
+                editCaption: 'Edit Category',
+                processData: "Saving...",
+                closeAfterEdit: true,
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Submit",
+                bExit: 'Cancel',
+                afterSubmit: function (response, postdata) {
+                    var json = $.parseJSON(response.responseText);
+
+                    if (json) {
+                        $(gridName).jqGrid('setGridParam', { datatype: 'json' });
+                        return [json.success, json.message, json.id];
+                    }
+
+                    return [false, "Failed to get result from server.", null];
+                }
+            };
  
             columns.push({
                 name: 'Id',
@@ -444,7 +466,7 @@ $(function () {
                 cloneToTop: true,
                 search: false
             },
-            {}, addOptions, {});
+            editOptions, addOptions, {});
         },
 
         // function to create grid to manage tags

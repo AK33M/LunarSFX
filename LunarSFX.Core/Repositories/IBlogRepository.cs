@@ -30,5 +30,6 @@ namespace LunarSFX.Core.Repositories
         void EditPost(Post post);
         void DeletePost(int id);
         int AddCategory(Category category);
+        void EditCategory(Category category);
     }
 }

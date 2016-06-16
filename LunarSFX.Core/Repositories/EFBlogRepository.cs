@@ -62,6 +62,12 @@ namespace LunarSFX.Core.Repositories
             return category.Id;
         }
 
+        public void EditCategory(Category category)
+        {
+            _context.Entry(category).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+        }
+
         public Post Post(int year, int month, string titleSlug)
         {
             return _context.Posts.Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug)).Single();
