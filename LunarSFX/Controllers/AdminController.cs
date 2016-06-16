@@ -40,6 +40,47 @@ namespace LunarSFX.Controllers
             }, new CustomDateTimeConverter()), "application/Json");
         }
 
+        public ContentResult Categories()
+        {
+            var categories = _blogRepository.Categories();
+
+            return Content(JsonConvert.SerializeObject(new
+            {
+                page = 1,
+                records = categories.Count,
+                rows = categories,
+                total = 1
+            }), "application/json");
+        }
+
+        [HttpPost]
+        public ContentResult AddCategory([Bind(Exclude = "Id")]Category category)
+        {
+            string json;
+
+            if (ModelState.IsValid)
+            {
+                var id = _blogRepository.AddCategory(category);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = id,
+                    success = true,
+                    message = "Category added successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to add the category."
+                });
+            }
+
+            return Content(json, "application/json");
+        }
+
         [HttpPost, ValidateInput(false)]
         public ContentResult AddPost(Post post)
         {

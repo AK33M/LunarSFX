@@ -55,6 +55,13 @@ namespace LunarSFX.Core.Repositories
             return _context.Categories.FirstOrDefault(c => c.Id == id);
         }
 
+        public int AddCategory(Category category)
+        {
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+            return category.Id;
+        }
+
         public Post Post(int year, int month, string titleSlug)
         {
             return _context.Posts.Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug)).Single();
@@ -363,5 +370,6 @@ namespace LunarSFX.Core.Repositories
                         .Where(p => p.Published && p.Tags.Any(t => t.UrlSlug.Equals(tagSlug)))
                         .Count();
         }
+
     }
 }
