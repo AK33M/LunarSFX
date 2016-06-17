@@ -14,16 +14,16 @@ namespace LunarSFX
             //New bundling
             bundles.Add(new ScriptBundle("~/scripts/jquery").Include("~/Scripts/js/jquery.js", "~/Scripts/jqueryui/jquery-ui.js"));
 
-            bundles.Add(new StyleBundle("~/styles/jqueryui").IncludeDirectory("~/Content/styles/jqueryui", "*.css"));
-            bundles.Add(new StyleBundle("~/styles/jqueryui/custom").IncludeDirectory("~/Content/sunny", "*.css"));
+            bundles.Add(new StyleBundle("~/Content/jqueryui").IncludeDirectory("~/Content/styles/jqueryui", "*.css"));
+            bundles.Add(new StyleBundle("~/Content/jqueryui/custom").IncludeDirectory("~/Content/sunny", "*.css"));
 
             bundles.Add(new ScriptBundle("~/scripts/jqgrid").Include("~/Scripts/jqgrid/jquery.jqGrid.js","~/Scripts/jqgrid/i18n/grid.locale-en.js"));
 
-            bundles.Add(new StyleBundle("~/styles/jqgrid").IncludeDirectory("~/Content/styles/jqgrid", "*.css"));
+            bundles.Add(new StyleBundle("~/Content/jqgrid").IncludeDirectory("~/Content/styles/jqgrid", "*.css"));
 
             bundles.Add(new ScriptBundle("~/scripts/tinymce").Include("~/Scripts/tinymce/jquery.tinymce.min.js", "~/Scripts/tinymce/tinymce.min.js"));
 
-            bundles.Add(new StyleBundle("~/styles/admin").IncludeDirectory("~/Content/admin", "*.css"));
+            bundles.Add(new StyleBundle("~/Content/admin").IncludeDirectory("~/Content/admin", "*.css"));
 
             bundles.Add(new ScriptBundle("~/scripts/admin").Include("~/Scripts/admin.js"));
 
