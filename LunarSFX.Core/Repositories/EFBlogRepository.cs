@@ -55,26 +55,6 @@ namespace LunarSFX.Core.Repositories
             return _context.Categories.FirstOrDefault(c => c.Id == id);
         }
 
-        public int AddTag(Tag tag)
-        {
-            _context.Tags.Add(tag);
-            _context.SaveChanges();
-            return tag.Id;
-        }
-
-        public void EditTag(Tag tag)
-        {
-            _context.Entry(tag).State = System.Data.Entity.EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void DeleteTag(int id)
-        {
-            var tag = Tag(id);
-            _context.Entry(tag).State = System.Data.Entity.EntityState.Deleted;
-            _context.SaveChanges();
-        }
-
         public int AddCategory(Category category)
         {
             _context.Categories.Add(category);

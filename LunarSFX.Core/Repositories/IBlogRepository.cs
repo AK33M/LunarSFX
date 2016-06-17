@@ -32,8 +32,5 @@ namespace LunarSFX.Core.Repositories
         int AddCategory(Category category);
         void EditCategory(Category category);
         void DeleteCategory(int id);
-        int AddTag(Tag tag);
-        void EditTag(Tag tag);
-        void DeleteTag(int id);
     }
 }
