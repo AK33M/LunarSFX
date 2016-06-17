@@ -21,7 +21,7 @@ namespace LunarSFX
 
             bundles.Add(new StyleBundle("~/Content/jqgrid/css").IncludeDirectory("~/Content/styles/jqgrid", "*.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/tinymce/js").Include("~/Scripts/tinymce/tinymce.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/tinymce/js").Include("~/Scripts/tinymce/tinymce.min.js", "~/Scripts/tinymce/themes/modern/theme/min.js"));
 
             bundles.Add(new StyleBundle("~/Content/admin/css").IncludeDirectory("~/Content/admin", "*.css"));
 
