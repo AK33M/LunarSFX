@@ -26,8 +26,8 @@ namespace LunarSFX
             //Styles
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css")
-                    .IncludeDirectory("~/Content/styles/jqgrid", "*.css")
                     .IncludeDirectory("~/Content/styles/jqueryui", "*.css")
+                    .IncludeDirectory("~/Content/styles/jqgrid", "*.css")
                     .IncludeDirectory("~/Content/sunny", "*.css", true)
                     .IncludeDirectory("~/Content/admin", "*.css"));
 
