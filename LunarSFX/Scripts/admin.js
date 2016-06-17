@@ -153,8 +153,7 @@ $(function () {
 
             columns.push({
                 name: 'Meta',
-                width: 70,
-                //autowidth: true,
+                width: 250,
                 sortable: false,
                 editable: true,
                 edittype: 'textarea',
@@ -266,7 +265,7 @@ $(function () {
                 url: '/Admin/AddPost',
                 addCaption: 'Add Post',
                 processData: "Saving...",
-                width: 'auto',
+                width: 1000,
                 closeAfterAdd: true,
                 closeOnEscape: true,
                 bCancel: "Cancel",
