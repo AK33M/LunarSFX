@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>Manage Posts, Categories and Tags</title>
 
-    @Styles.Render("~/Content/jqueryui/css")
+    @*@Styles.Render("~/Content/jqueryui/css")
     @Styles.Render("~/Content/jqueryui/custom/css")
     @Styles.Render("~/Content/jqgrid/css")
-    @Styles.Render("~/Content/admin/css")
+    @Styles.Render("~/Content/admin/css")*@
 </head>
 <body>
     <div> 
@@ -52,6 +52,12 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery/js")
+
+   
+
+    <script src="~/Scripts/js/jquery.js"></script>
+    <script src="~/Scripts/jqgrid/jquery.jqGrid.js"></script>
+    <script src="~/Scripts/jqueryui/jquery-ui.min.js"></script>
     <script type="text/javascript">
         jQuery.browser = {};
         (function () {
@@ -63,9 +69,9 @@
             }
         })();
     </script>
-    @Scripts.Render("~/bundles/jqgrid/js")
+    @*@Scripts.Render("~/bundles/jqgrid/js")
     @Scripts.Render("~/bundles/tinymce/js")
-    @Scripts.Render("~/bundles/tinymce/themes/js")
+    @Scripts.Render("~/bundles/tinymce/themes/js")*@
     @Scripts.Render("~/bundles/admin/js")
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
 </body>
