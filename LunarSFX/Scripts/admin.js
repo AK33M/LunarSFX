@@ -59,7 +59,7 @@ $(function () {
             columns.push({
                 name: 'Title',
                 index: 'Title',
-                width: 250,
+                width: 150,
                 editable: true,
                 editoptions: {
                     size: 43,
@@ -153,7 +153,7 @@ $(function () {
 
             columns.push({
                 name: 'Meta',
-                width: 250,
+                width: 100,
                 sortable: false,
                 editable: true,
                 edittype: 'textarea',
