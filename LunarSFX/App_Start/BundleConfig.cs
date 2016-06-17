@@ -15,13 +15,12 @@ namespace LunarSFX
             bundles.Add(new ScriptBundle("~/scripts/jquery/js").Include("~/Scripts/js/jquery.js", "~/Scripts/jqueryui/jquery-ui.js"));
 
 
+            bundles.Add(new ScriptBundle("~/bundles/all/js").Include("~/Scripts/jqgrid/jquery.jqGrid.js", "~/Scripts/jqgrid/i18n/grid.locale-en.js").Include("~/Scripts/tinymce/jquery.tinymce.min.js", "~/Scripts/tinymce/tinymce.min.js").Include("~/ Scripts/admin.js"));
+            //bundles.Add(new ScriptBundle("~/scripts/admin/js").Include("~/Scripts/admin.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/admin/js").Include("~/Scripts/admin.js"));
-            // bundles.Add(new StyleBundle("~/styles/jqueryui/images/css").IncludeDirectory("~/Content/sunny/images", "*.png"));
+            //bundles.Add(new ScriptBundle("~/scripts/jqgrid/js").Include("~/Scripts/jqgrid/jquery.jqGrid.js","~/Scripts/jqgrid/i18n/grid.locale-en.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/jqgrid/js").Include("~/Scripts/jqgrid/jquery.jqGrid.js","~/Scripts/jqgrid/i18n/grid.locale-en.js"));
-
-            bundles.Add(new ScriptBundle("~/scripts/tinymce/js").Include("~/Scripts/tinymce/jquery.tinymce.min.js", "~/Scripts/tinymce/tinymce.min.js"));
+            //bundles.Add(new ScriptBundle("~/scripts/tinymce/js").Include("~/Scripts/tinymce/jquery.tinymce.min.js", "~/Scripts/tinymce/tinymce.min.js"));
 
             //Styles
 
