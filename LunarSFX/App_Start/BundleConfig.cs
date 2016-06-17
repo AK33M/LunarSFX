@@ -16,7 +16,7 @@ namespace LunarSFX
 
             bundles.Add(new StyleBundle("~/styles/jqueryui/css").IncludeDirectory("~/Content/styles/jqueryui", "*.css"));
 
-            bundles.Add(new StyleBundle("~/styles/jqueryui/custom/css").IncludeDirectory("~/Content/sunny", "*.css"));
+            bundles.Add(new StyleBundle("~/styles/jqueryui/custom/css").IncludeDirectory("~/Content/sunny", "*.css", true));
 
             bundles.Add(new StyleBundle("~/styles/jqueryui/images/css").IncludeDirectory("~/Content/sunny/images", "*.png"));
 
