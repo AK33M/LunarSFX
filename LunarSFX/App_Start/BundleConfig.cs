@@ -11,23 +11,14 @@ namespace LunarSFX
             bundles.Add(new ScriptBundle("~/bundles/js").IncludeDirectory("~/Scripts", "*.js", true));
             bundles.Add(new StyleBundle("~/Content/clean/css").IncludeDirectory("~/Content/themes/clean", "*.css"));
 
-            //New bundling
-            //bundles.Add(new ScriptBundle("~/bundles/jquery/js").Include("~/Scripts/js/jquery.js", "~/Scripts/jqueryui/jquery-ui.js", "~/Scripts/tinymce/jquery.tinymce.min.js"));
+            //Admin bundling
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                       "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                       "~/Scripts/jquery-ui-{version}.js"));
 
-            //bundles.Add(new StyleBundle("~/Content/jqueryui/css").IncludeDirectory("~/Content/styles/jqueryui", "*.css"));
-            //bundles.Add(new StyleBundle("~/Content/jqueryui/custom/css").IncludeDirectory("~/Content/sunny", "*.css"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/jqgrid/js").Include("~/Scripts/jqgrid/jquery.jqGrid.js","~/Scripts/jqgrid/i18n/grid.locale-en.js"));
-
-            //bundles.Add(new StyleBundle("~/Content/jqgrid/css").IncludeDirectory("~/Content/styles/jqgrid", "*.css"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/tinymce/js").Include("~/Scripts/tinymce/tinymce.min.js"));
-            //bundles.Add(new ScriptBundle("~/bundles/tinymce/themes/js").Include("~/Scripts/tinymce/themes/modern/theme.min.js"));
-
-            //bundles.Add(new StyleBundle("~/Content/admin/css").IncludeDirectory("~/Content/admin", "*.css"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/admin/js").Include("~/Scripts/admin.js"));
-
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+              "~/Content/themes/base/all.css"));
         }
     }
 }
