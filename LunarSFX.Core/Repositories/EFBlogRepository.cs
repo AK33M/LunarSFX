@@ -75,6 +75,26 @@ namespace LunarSFX.Core.Repositories
             _context.SaveChanges();
         }
 
+        public int AddTag(Tag tag)
+        {
+            _context.Tags.Add(tag);
+            _context.SaveChanges();
+            return tag.Id;
+        }
+
+        public void EditTag(Tag tag)
+        {
+            _context.Entry(tag).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void DeleteTag(int id)
+        {
+            var tag = Tag(id);
+            _context.Entry(tag).State = System.Data.Entity.EntityState.Deleted;
+            _context.SaveChanges();
+        }
+
         public Post Post(int year, int month, string titleSlug)
         {
             return _context.Posts.Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug)).Single();
