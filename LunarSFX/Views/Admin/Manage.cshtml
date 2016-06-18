@@ -11,13 +11,7 @@
 
     @Styles.Render("~/Content/themes/base/css")
     @Styles.Render("~/Content/ui.jqGrid/css")
-
-    <!-- tinyMCE 
-    <script src="@Url.Content("~/Scripts/tiny_mce/tiny_mce.js")"></script>
-
-    <link href="@Url.Content("~/Content/themes/simple/admin.css")" rel="stylesheet" />
-    <script src="@Url.Content("~/Scripts/admin.js")"></script>-->
-
+    @Styles.Render("~/Content/admin/css")
 </head>
 <body>
 
@@ -61,6 +55,9 @@
     @Scripts.Render("~/bundles/jqueryui")
     <!-- jqgrid library-->
     @Scripts.Render("~/bundles/jqgrid")
-
+    <!-- Tiny Mce library-->
+    @Scripts.Render("~/bundles/tiny_mce/js")
+    <!-- Admin library-->
+    @Scripts.Render("~/bundles/admin/js")
 </body>
 </html>

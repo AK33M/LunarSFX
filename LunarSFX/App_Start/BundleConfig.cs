@@ -25,6 +25,13 @@ namespace LunarSFX
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
               "~/Content/themes/base/all.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tiny_mce/js").Include("~/Scripts/tinymce/tinymce.js"));
+
+            bundles.Add(new StyleBundle("~/Content/admin/css").Include(
+              "~/Content/admin/admin.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/admin/js").Include("~/Scripts/admin.js"));
         }
     }
 }
