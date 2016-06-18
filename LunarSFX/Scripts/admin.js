@@ -241,6 +241,8 @@ $(function () {
                 // display the no. of records message
                 viewrecords: true,
 
+                shrinkToFit: true,
+
                 gridview: false,
                 autoendcode: true,
 
@@ -329,7 +331,163 @@ $(function () {
 
         // function to create grid to manage categories
         categoriesGrid: function (gridName, pagerName) {
-            console.log(gridName);
+
+            var colNames = ['Id', 'Name', 'Url Slug', 'Description'];
+
+            var columns = [];
+
+            var addOptions = {
+                url: '/Admin/AddCategory',
+                width: 400,
+                addCaption: 'Add Category',
+                processData: "Saving...",
+                closeAfterAdd: true,
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Submit",
+                bExit: 'Cancel',
+                afterSubmit: function (response, postdata) {
+                    var json = $.parseJSON(response.responseText);
+
+                    if (json) {
+                        // since the data is in the client-side, reload the grid.
+                        $(gridName).jqGrid('setGridParam', { datatype: 'json' });
+                        return [json.success, json.message, json.id];
+                    }
+
+                    return [false, "Failed to get result from server.", null];
+                }
+            };
+
+            var editOptions = {
+                url: '/Admin/EditCategory',
+                width: 400,
+                editCaption: 'Edit Category',
+                processData: "Saving...",
+                closeAfterEdit: true,
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Submit",
+                bExit: 'Cancel',
+                afterSubmit: function (response, postdata) {
+                    var json = $.parseJSON(response.responseText);
+
+                    if (json) {
+                        $(gridName).jqGrid('setGridParam', { datatype: 'json' });
+                        return [json.success, json.message, json.id];
+                    }
+
+                    return [false, "Failed to get result from server.", null];
+                }
+            };
+
+            var deleteOptions = {
+                url: '/Admin/DeleteCategory',
+                caption: 'Delete Category',
+                processData: "Saving...",
+                width: 500,
+                msg: "Delete the category? This will delete all the posts belongs to this category as well.",
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Delete",
+                bExit: 'Cancel',
+                afterSubmit: LunarSFX.GridManager.afterSubmitHandler
+            };
+
+            columns.push({
+                name: 'Id',
+                index: 'Id',
+                hidden: true,
+                sorttype: 'int',
+                key: true,
+                editable: false,
+                editoptions: {
+                    readonly: true
+                }
+            });
+
+            columns.push({
+                name: 'Name',
+                index: 'Name',
+                width: 200,
+                editable: true,
+                edittype: 'text',
+                editoptions: {
+                    size: 30,
+                    maxlength: 50
+                },
+                editrules: {
+                    required: true
+                }
+            });
+
+            columns.push({
+                name: 'UrlSlug',
+                index: 'UrlSlug',
+                width: 200,
+                editable: true,
+                edittype: 'text',
+                sortable: false,
+                editoptions: {
+                    size: 30,
+                    maxlength: 50
+                },
+                editrules: {
+                    required: true
+                }
+            });
+
+            columns.push({
+                name: 'Description',
+                index: 'Description',
+                width: 200,
+                editable: true,
+                edittype: 'textarea',
+                sortable: false,
+                editoptions: {
+                    rows: "4",
+                    cols: "28"
+                }
+            });
+
+            $(gridName).jqGrid({
+                url: '/Admin/Categories',
+                datatype: 'json',
+                mtype: 'GET',
+                height: 'auto',
+                toppager: true,
+                colNames: colNames,
+                colModel: columns,
+                pager: pagerName,
+                shrinkToFit: true,
+                width: 1000,
+                rownumbers: true,
+                rownumWidth: 40,
+                rowNum: 500,
+                sortname: 'Name',
+                loadonce: true,
+                jsonReader: {
+                    repeatitems: false
+                }
+            });
+
+            $(gridName).navGrid(pagerName,
+                            { // settings
+                                addtext: 'add',
+                                addtitle: 'add category',
+                                deltext: 'delete',
+                                deltitle: 'delete category',
+                                edittext: 'edit',
+                                edittitle: 'edit category',
+                                refreshtext: 'refresh',
+                                refreshtitle: 'refresh list',
+                                cloneToTop: true,
+                                search: false
+                            },
+                            editOptions, // edit options
+                            addOptions, // add options
+                            deleteOptions// delete options
+                        );
         },
 
         // function to create grid to manage tags
@@ -359,10 +517,10 @@ $(function () {
             },
 
         activate: function (event, ui) {
-            var gdMgr = LunarSFX.GridManager;
+            var gdMgr = LunarSFX.GridManager, fn, gridName, pagerName;
             switch (ui.newTab.index()) {
                 case 0:
-                    fn = gdMgr.postsGrid, fn, gridName, pagerName;
+                    fn = gdMgr.postsGrid;
                     gridName = "#tablePosts";
                     pagerName = "#pagerPosts";
                     break;
