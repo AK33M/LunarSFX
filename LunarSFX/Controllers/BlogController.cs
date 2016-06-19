@@ -64,6 +64,9 @@ namespace LunarSFX.Controllers
             if (post == null)
                 throw new HttpException(404, "Post not found");
 
+            if (true)
+                throw new HttpException(500, "shit");
+
             if (post.Published == false && User.Identity.IsAuthenticated == false)
                 throw new HttpException(401, "The post is not published");
 
