@@ -97,7 +97,7 @@ namespace LunarSFX.Core.Repositories
 
         public Post Post(int year, int month, string titleSlug)
         {
-            return _context.Posts.Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug)).Single();
+            return _context.Posts.Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug)).SingleOrDefault();
         }
 
         public IList<Post> Posts(int pageNo, int pageSize)
