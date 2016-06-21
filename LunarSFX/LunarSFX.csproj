@@ -194,6 +194,7 @@
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\admin\admin.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -232,11 +233,11 @@
     <Content Include="Content\themes\clean\clean-blog.css" />
     <Content Include="Content\themes\clean\clean-blog.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Images\about-bg.jpg" />
-    <Content Include="Images\contact-bg.jpg" />
-    <Content Include="Images\home-bg.jpg" />
-    <Content Include="Images\post-bg.jpg" />
-    <Content Include="Images\post-sample-image.jpg" />
+    <Content Include="Content\Images\about-bg.jpg" />
+    <Content Include="Content\Images\contact-bg.jpg" />
+    <Content Include="Content\Images\home-bg.jpg" />
+    <Content Include="Content\Images\post-bg.jpg" />
+    <Content Include="Content\Images\post-sample-image.jpg" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\app.js" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
