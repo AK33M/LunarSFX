@@ -22,10 +22,11 @@
                     @Helpers.Tags(Html, Model.Tags)
 
 
-                    <span class="posted-date pull-right">Posted On 
+                    <span class="posted-date pull-right">
+                        Posted On
                         @Model.PostedOn.ToString("f")
-                </span>
-            </div>
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -36,16 +37,11 @@
     </div>
 </div>
 
-@*@section scripts {
+@section scripts {
     <script>
-    $.ready(function () {
         changeBackGround();
-        alert("Hi");
-    });
-
-    function changeBackGround(){
-        alert(".homebackground");
-        $(".homebackground").addClass("postbackground");
-    };
-</script>
-}*@
+        function changeBackGround() {
+            $(".homebackground").toggleClass("homebackground postbackground");
+        };
+    </script>
+}
