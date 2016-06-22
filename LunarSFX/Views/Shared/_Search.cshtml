@@ -1,13 +1,23 @@
-﻿<div class="sidebar">
-    @using (Html.BeginForm(
-                    "Search",           // action
-                    "Blog",             // controller
-                    FormMethod.Get,     // method
-                    new { id = "search-form" })) // html attributes
-{
-    <p>
-        @Html.TextBox("s")
-        <input type="submit" value="Search">
-    </p>
-}
-</div>
+﻿@*<div>
+        @using (Html.BeginForm(
+                        "Search",           // action
+                        "Blog",             // controller
+                        FormMethod.Get,     // method
+                        new { id = "search-form" })) // html attributes
+    {
+        <p>
+            @Html.TextBox("s")
+            <input type="submit" value="Search">
+        </p>
+    }
+    </div>*@
+<a>
+    <form class="search">
+        <i class="glyphicon glyphicon-search"></i>
+    </form>
+</a>
+@*@using (Html.BeginForm( "Search","Blog",FormMethod.Get,new { id = "search-form", @class = "search" }))
+    {
+        <a><i class="glyphicon glyphicon-search"></i></a>
+        @Html.TextBox("s", null, new { maxlength = "64", placeholder = "Search" })
+    }*@
