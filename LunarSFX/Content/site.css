@@ -13,42 +13,20 @@
 }
 
 .search {
-    /*width: 230px;*/
     height: 30px;
     position: relative;
     left: 10px;
     float: left;
     line-height: 22px;
 }
-    .search:hover {
-        width: 230px;
-        animation: ease-in-out 1s;
+    .search:hover .searchTextBox, .search input:focus {
+        width: 200px;
+        display: inline;
     }
 
-    /*.search input {
-        position: absolute;
-        width: 0px;
-        float: Left;
-        margin-left: 210px;
-        -webkit-transition: all 0.7s ease-in-out;
-        -moz-transition: all 0.7s ease-in-out;
-        -o-transition: all 0.7s ease-in-out;
-        transition: all 0.7s ease-in-out;
-        height: 30px;
-        line-height: 18px;
-        padding: 0 2px 0 2px;
+    .searchTextBox{
+        display: none;
         border-radius: 5px;
+        color: black;
     }
 
-        .search:hover input, .search input:focus {
-            width: 200px;
-            margin-left: 0px;
-        }
-
-.btn {
-    height: 30px;
-    position: absolute;
-    right: 0;
-    top: 5px;
-    border-radius: 1px;
-}*/

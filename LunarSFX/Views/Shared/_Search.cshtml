@@ -1,23 +1,7 @@
-﻿@*<div>
-        @using (Html.BeginForm(
-                        "Search",           // action
-                        "Blog",             // controller
-                        FormMethod.Get,     // method
-                        new { id = "search-form" })) // html attributes
+﻿<a>
+    @using (Html.BeginForm("Search", "Blog", FormMethod.Get, new { id = "search-form", @class = "searchTextBox, search" }))
     {
-        <p>
-            @Html.TextBox("s")
-            <input type="submit" value="Search">
-        </p>
-    }
-    </div>*@
-<a>
-    <form class="search">
         <i class="glyphicon glyphicon-search"></i>
-    </form>
+        @Html.TextBox("s", null, new { maxlength = "64", placeholder = "Search", @class = "searchTextBox" })
+    }
 </a>
-@*@using (Html.BeginForm( "Search","Blog",FormMethod.Get,new { id = "search-form", @class = "search" }))
-    {
-        <a><i class="glyphicon glyphicon-search"></i></a>
-        @Html.TextBox("s", null, new { maxlength = "64", placeholder = "Search" })
-    }*@
