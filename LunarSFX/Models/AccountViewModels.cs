@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LunarSFX.Models
@@ -36,5 +37,18 @@ namespace LunarSFX.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class UserViewModel
+    {
+        public string Id { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name ="Email Address")]
+        public string Email { get; set; }
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+        public IList<string> Roles { get; set; }
     }
 }

@@ -648,6 +648,111 @@ $(function () {
             editOptions, addOptions, deleteOptions);
         },
 
+        // function to create grid to manage users
+        usersGrid: function (gridName, pagerName) {
+            var colNames = ['Id', 'Email', 'UserName', 'Roles'];
+
+            var columns = [];
+
+            columns.push({
+                name: 'Id',
+                index: 'Id',
+                hidden: true,
+                sorttype: 'int',
+                key: true,
+                editable: false,
+                editoptions: {
+                    readonly: true
+                }
+            });
+
+            columns.push({
+                name: 'Email',
+                index: 'Email',
+                width: 200,
+                editable: true,
+                edittype: 'text',
+                editoptions: {
+                    size: 30,
+                    maxlength: 50
+                },
+                editrules: {
+                    required: true
+                }
+            });
+
+            columns.push({
+                name: 'UserName',
+                index: 'UserName',
+                width: 200,
+                editable: true,
+                edittype: 'text',
+                sortable: false,
+                editoptions: {
+                    size: 30,
+                    maxlength: 50
+                },
+                editrules: {
+                    required: true
+                }
+            });
+
+            columns.push({
+                name: 'Roles',
+                width: 150,
+                editable: true,
+                edittype: 'select',
+                editoptions: {
+                    style: 'width:250px;',
+                    dataUrl: '/Admin/GetRolesHtml',
+                    multiple: true
+                },
+                editrules: {
+                    required: true
+                }
+            });
+
+            //create the grid
+            $(gridName).jqGrid({
+                url: '/Admin/Users',
+                datatype: 'json',
+                mtype: 'GET',
+                height: 'auto',
+                toppager: true,
+                colNames: colNames,
+                colModel: columns,
+                pager: pagerName,
+                shrinkToFit: true,
+                width: 1000,
+                rownumbers: true,
+                rownumWidth: 40,
+                rowNum: 500,
+                sortname: 'Id',
+                loadonce: true,
+                jsonReader: {
+                    repeatitems: false
+                }
+            });
+
+            // configuring the navigation toolbar.
+            $(gridName).jqGrid('navGrid', pagerName,
+                {
+                    addtext: 'add',
+                    addtitle: 'add user',
+                    deltext: 'delete',
+                    deltitle: 'delete user',
+                    edittext: 'edit',
+                    edittitle: 'edit user',
+                    refreshtext: 'refresh',
+                    refreshtitle: 'refresh list',
+                    cloneToTop: true,
+                    search: false
+                },
+
+                {}, {}, {});
+
+        },
+
         afterSubmitHandler: function (response, postdata) {
 
             var json = $.parseJSON(response.responseText);
@@ -686,6 +791,11 @@ $(function () {
                     fn = gdMgr.tagsGrid;
                     gridName = "#tableTags";
                     pagerName = "#pagerTags";
+                    break;
+                case 3:
+                    fn = gdMgr.usersGrid;
+                    gridName = "#tableUsers";
+                    pagerName = "#pagerUsers";
                     break;
             };
 

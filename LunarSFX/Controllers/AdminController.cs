@@ -4,6 +4,7 @@ using LunarSFX.Extensions;
 using LunarSFX.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -289,15 +290,28 @@ namespace LunarSFX.Controllers
             return Content(json, "application/json");
         }
 
-        public ContentResult Users()
+        public async System.Threading.Tasks.Task<ContentResult> Users()
         {
+            var listofusers = new List<UserViewModel>();
+
             var users = _userManager.Users.ToList();
+
+            foreach (var user in users)
+            {
+                listofusers.Add(new UserViewModel()
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Roles = await _userManager.GetRolesAsync(user.Id)
+                });
+            }
 
             return Content(JsonConvert.SerializeObject(new
             {
                 page = 1,
-                records = users.Count,
-                rows = users,
+                records = listofusers.Count,
+                rows = listofusers,
                 total = 1
             }), "application/json");
         }
