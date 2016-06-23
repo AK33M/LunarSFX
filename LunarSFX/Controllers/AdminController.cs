@@ -291,38 +291,26 @@ namespace LunarSFX.Controllers
         }
 
         [HttpPost]
-        public ContentResult EditUser(UserViewModel user)
+        public async System.Threading.Tasks.Task<ContentResult> EditUser(UserViewModel user)
         {
             string json;
 
-            var deletedRoles = new List<string>();
-            var addedRoles = new List<string>();
+            //user.Roles Not a list or rather a list of one comma seperated string
+            var incRoles = user.Roles.FirstOrDefault().Split(',').ToArray();
 
-            foreach (var role in user.Roles)
-            {
-                var inRole = _userManager.IsInRoleAsync(user.Id, role).Result;
+            var deletedRoles = _userManager.GetRolesAsync(user.Id).Result.Except(incRoles);
 
-                if(!inRole)
-                {
-                    addedRoles.Add(role);
-                }
-                else
-                {
-                    deletedRoles.Add(role);
-                }
-            }
+            var addedRoles = incRoles.Except(_userManager.GetRolesAsync(user.Id).Result);
 
             var userDb = _userManager.FindByIdAsync(user.Id).Result;
-            
 
             if (userDb != null)
             {
                 userDb.Email = user.Email;
                 userDb.UserName = user.UserName;
-                _userManager.RemoveFromRolesAsync(userDb.Id, deletedRoles.ToArray());
-                _userManager.AddToRolesAsync(userDb.Id, addedRoles.ToArray());
-
-                _userManager.UpdateAsync(userDb);                
+                await _userManager.RemoveFromRolesAsync(userDb.Id, deletedRoles.ToArray());
+                await _userManager.AddToRolesAsync(userDb.Id, addedRoles.ToArray());
+                await _userManager.UpdateAsync(userDb);
             }
 
             ModelState.Clear();
@@ -419,7 +407,7 @@ namespace LunarSFX.Controllers
             foreach (var role in roles)
             {
                 sb.AppendLine(string.Format(@"<option value=""{0}"">{1}</option>",
-                    role.Id, role.Name));
+                    role.Name, role.Name));
             }
 
             sb.AppendLine("</select>");
