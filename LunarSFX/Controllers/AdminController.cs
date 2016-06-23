@@ -290,6 +290,65 @@ namespace LunarSFX.Controllers
             return Content(json, "application/json");
         }
 
+        [HttpPost]
+        public ContentResult EditUser(UserViewModel user)
+        {
+            string json;
+
+            var deletedRoles = new List<string>();
+            var addedRoles = new List<string>();
+
+            foreach (var role in user.Roles)
+            {
+                var inRole = _userManager.IsInRoleAsync(user.Id, role).Result;
+
+                if(!inRole)
+                {
+                    addedRoles.Add(role);
+                }
+                else
+                {
+                    deletedRoles.Add(role);
+                }
+            }
+
+            var userDb = _userManager.FindByIdAsync(user.Id).Result;
+            
+
+            if (userDb != null)
+            {
+                userDb.Email = user.Email;
+                userDb.UserName = user.UserName;
+                _userManager.RemoveFromRolesAsync(userDb.Id, deletedRoles.ToArray());
+                _userManager.AddToRolesAsync(userDb.Id, addedRoles.ToArray());
+
+                _userManager.UpdateAsync(userDb);                
+            }
+
+            ModelState.Clear();
+
+            if (ModelState.IsValid)
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = userDb.Id,
+                    success = true,
+                    message = "Changes saved successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to save the changes."
+                });
+            }
+
+            return Content(json, "application/json");
+        }
+
         public async System.Threading.Tasks.Task<ContentResult> Users()
         {
             var listofusers = new List<UserViewModel>();
@@ -329,7 +388,7 @@ namespace LunarSFX.Controllers
                     category.Id, category.Name));
             }
 
-            sb.AppendLine("<select>");
+            sb.AppendLine("</select>");
             return Content(sb.ToString(), "text/html");
         }
 
@@ -346,7 +405,24 @@ namespace LunarSFX.Controllers
                     tag.Id, tag.Name));
             }
 
-            sb.AppendLine("<select>");
+            sb.AppendLine("</select>");
+            return Content(sb.ToString(), "text/html");
+        }
+
+        public ContentResult GetRolesHtml()
+        {
+            var roles = _roleManager.Roles.ToList();
+
+            var sb = new StringBuilder();
+            sb.AppendLine(@"<select>");
+
+            foreach (var role in roles)
+            {
+                sb.AppendLine(string.Format(@"<option value=""{0}"">{1}</option>",
+                    role.Id, role.Name));
+            }
+
+            sb.AppendLine("</select>");
             return Content(sb.ToString(), "text/html");
         }
     }

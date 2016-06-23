@@ -654,6 +654,41 @@ $(function () {
 
             var columns = [];
 
+            var editOptions = {
+                url: '/Admin/EditUser',
+                width: 400,
+                editCaption: 'Edit User',
+                processData: "Saving...",
+                closeAfterEdit: true,
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Submit",
+                bExit: 'Cancel',
+                afterSubmit: function (response, postdata) {
+                    var json = $.parseJSON(response.responseText);
+
+                    if (json) {
+                        $(gridName).jqGrid('setGridParam', { datatype: 'json' });
+                        return [json.success, json.message, json.id];
+                    }
+
+                    return [false, "Failed to get result from server.", null];
+                }
+            };
+
+            var deleteOptions = {
+                url: '/Admin/EditUser',
+                caption: 'Delete User',
+                processData: "Saving...",
+                width: 400,
+                msg: "Delete this user?",
+                closeOnEscape: true,
+                bCancel: "Cancel",
+                bSubmit: "Delete",
+                bExit: 'Cancel',
+                afterSubmit: LunarSFX.GridManager.afterSubmitHandler
+            };
+
             columns.push({
                 name: 'Id',
                 index: 'Id',
@@ -737,8 +772,7 @@ $(function () {
             // configuring the navigation toolbar.
             $(gridName).jqGrid('navGrid', pagerName,
                 {
-                    addtext: 'add',
-                    addtitle: 'add user',
+                    add: false,
                     deltext: 'delete',
                     deltitle: 'delete user',
                     edittext: 'edit',
@@ -749,7 +783,7 @@ $(function () {
                     search: false
                 },
 
-                {}, {}, {});
+                editOptions, {}, deleteOptions);
 
         },
 
