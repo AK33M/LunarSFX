@@ -4,6 +4,7 @@ using LunarSFX.Extensions;
 using LunarSFX.Models;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
@@ -14,11 +15,13 @@ namespace LunarSFX.Controllers
     {
         private IBlogRepository _blogRepository;
         private readonly AppRoleManager _roleManager;
+        private readonly AppUserManager _userManager;
 
-        public AdminController(IBlogRepository blogRepository, AppRoleManager roleManager)
+        public AdminController(IBlogRepository blogRepository, AppRoleManager roleManager, AppUserManager userManager)
         {
             _blogRepository = blogRepository;
             _roleManager = roleManager;
+            _userManager = userManager;
         }
 
         // GET: Admin
@@ -284,6 +287,19 @@ namespace LunarSFX.Controllers
             });
 
             return Content(json, "application/json");
+        }
+
+        public ContentResult Users()
+        {
+            var users = _userManager.Users.ToList();
+
+            return Content(JsonConvert.SerializeObject(new
+            {
+                page = 1,
+                records = users.Count,
+                rows = users,
+                total = 1
+            }), "application/json");
         }
 
         public ContentResult GetCategoriesHtml()
