@@ -13,10 +13,12 @@ namespace LunarSFX.Controllers
     public class AdminController : Controller
     {
         private IBlogRepository _blogRepository;
+        private readonly AppRoleManager _roleManager;
 
-        public AdminController(IBlogRepository blogRepository)
+        public AdminController(IBlogRepository blogRepository, AppRoleManager roleManager)
         {
             _blogRepository = blogRepository;
+            _roleManager = roleManager;
         }
 
         // GET: Admin

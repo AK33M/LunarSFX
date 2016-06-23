@@ -1,5 +1,6 @@
 ﻿using LunarSFX.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
@@ -79,5 +80,12 @@ namespace LunarSFX
         //{
         //    return new AppSignInManager(context.GetUserManager<AppUserManager>(), context.Authentication);
         //}
+    }
+
+    public class AppRoleManager : RoleManager<IdentityRole>
+    {
+        public AppRoleManager(IRoleStore<IdentityRole, string> store) : base(store)
+        {
+        }
     }
 }
