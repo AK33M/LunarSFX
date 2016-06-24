@@ -677,7 +677,7 @@ $(function () {
             };
 
             var deleteOptions = {
-                url: '/User/EditUser',
+                url: '/User/DeleteUser',
                 caption: 'Delete User',
                 processData: "Saving...",
                 width: 400,

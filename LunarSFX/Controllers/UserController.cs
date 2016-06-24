@@ -1,4 +1,5 @@
 using LunarSFX.Models;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,23 @@ namespace LunarSFX.Controllers
                     message = "Failed to save the changes."
                 });
             }
+
+            return Content(json, "application/json");
+        }
+
+        [HttpPost]
+        public ContentResult DeleteUser(string Id)
+        {
+            var user = _userManager.FindByIdAsync(Id).Result;
+
+            _userManager.DeleteAsync(user);
+
+            var json = JsonConvert.SerializeObject(new
+            {
+                id = 0,
+                success = true,
+                message = "User deleted successfully."
+            });
 
             return Content(json, "application/json");
         }
