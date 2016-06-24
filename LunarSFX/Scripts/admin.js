@@ -655,7 +655,7 @@ $(function () {
             var columns = [];
 
             var editOptions = {
-                url: '/Admin/EditUser',
+                url: '/User/EditUser',
                 width: 400,
                 editCaption: 'Edit User',
                 processData: "Saving...",
@@ -677,7 +677,7 @@ $(function () {
             };
 
             var deleteOptions = {
-                url: '/Admin/EditUser',
+                url: '/User/EditUser',
                 caption: 'Delete User',
                 processData: "Saving...",
                 width: 400,
@@ -739,7 +739,7 @@ $(function () {
                 edittype: 'select',
                 editoptions: {
                     style: 'width:250px;',
-                    dataUrl: '/Admin/GetRolesHtml',
+                    dataUrl: '/User/GetRolesHtml',
                     multiple: true
                 },
                 editrules: {
@@ -749,7 +749,7 @@ $(function () {
 
             //create the grid
             $(gridName).jqGrid({
-                url: '/Admin/Users',
+                url: '/User/Users',
                 datatype: 'json',
                 mtype: 'GET',
                 height: 'auto',

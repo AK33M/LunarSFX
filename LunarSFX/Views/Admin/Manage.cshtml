@@ -30,7 +30,10 @@
             <li><a href="#tab-posts">Posts</a></li>
             <li><a href="#tab-cats">Categories</a></li>
             <li><a href="#tab-tags">Tags</a></li>
-            <li><a href="#tab-users">Users</a></li>
+            @if (CurrentUser.IsInRole("SuperAdmin"))
+            {
+                <li><a href="#tab-users">Users</a></li>
+            }           
         </ul>
 
         <div id="tab-posts" class="tab">
@@ -50,12 +53,14 @@
             <div id="pagerTags" class="pager">
             </div>
         </div>
-
-        <div id="tab-users" class="tab">
-            <table id="tableUsers" class="grid"></table>
-            <div id="pagerUsers" class="pager">
+        @if (CurrentUser.IsInRole("SuperAdmin"))
+        {
+            <div id="tab-users" class="tab">
+                <table id="tableUsers" class="grid"></table>
+                <div id="pagerUsers" class="pager">
+                </div>
             </div>
-        </div>
+        }       
     </div>
 
     <!-- jquery library -->

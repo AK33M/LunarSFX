@@ -490,6 +490,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ActionLinkExtensions.cs" />
     <Compile Include="Extensions\AppViewPage.cs" />
     <Compile Include="Extensions\CustomDateTimeConverter.cs" />

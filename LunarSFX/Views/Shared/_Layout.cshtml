@@ -44,7 +44,7 @@
                     {
                         <li>@Html.ActionLink("Log Out", "LogOut", "Auth")</li>
                     }
-                    @if (CurrentUser.IsInRole("Admin"))
+                    @if (CurrentUser.IsInRole("Admin") || CurrentUser.IsInRole("SuperAdmin"))
                     {
                         <li>@Html.ActionLink("Admin", "Manage", "Admin")</li>
                     }

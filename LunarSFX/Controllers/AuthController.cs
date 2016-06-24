@@ -112,11 +112,8 @@ namespace LunarSFX.Controllers
 
         public ActionResult LogOut()
         {
-            //var ctx = Request.GetOwinContext();
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            //var authManager = ctx.Authentication;
 
-            //authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Posts", "Blog");
         }
 
@@ -137,13 +134,11 @@ namespace LunarSFX.Controllers
                 if (_userManager != null)
                 {
                     _userManager.Dispose();
-                    //_userManager = null;
                 }
 
                 if (_signInManager != null)
                 {
                     _signInManager.Dispose();
-                   // _signInManager = null;
                 }
             }
 
