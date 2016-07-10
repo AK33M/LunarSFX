@@ -4,7 +4,9 @@ using LunarSFX.Extensions;
 using LunarSFX.Models;
 using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace LunarSFX.Controllers
@@ -319,5 +321,21 @@ namespace LunarSFX.Controllers
             sb.AppendLine("</select>");
             return Content(sb.ToString(), "text/html");
         }
+
+        #region Upload Images
+        [HttpPost]
+        public JsonResult UploadImage(HttpPostedFileBase Image)
+        {
+            string directory = @"D:\Temp\";
+
+            if (Image != null && Image.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(Image.FileName);
+                Image.SaveAs(Path.Combine(directory, fileName));
+            }
+            return Json(new { isUploaded = true, message = "Uploaded Successfully" }, "text/html");
+        }
+
+        #endregion
     }
 }
