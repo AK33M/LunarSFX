@@ -1,9 +1,9 @@
 .homebackground {
-    background-image: url('Images/mac-notepad.jpg');
+    background-image: url('Images/home-bg.jpg');
 }
 
 .postbackground {
-    background-image: url('Images/blog_typewriter.jpg');
+    background-image: url('Images/post-bg.jpg');
 }
 
 #search {
