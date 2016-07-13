@@ -1,6 +1,32 @@
-.homebackground{
-    background-image: url('Images/home-bg.jpg');
+.homebackground {
+    background-image: url('Images/mac-notepad.jpg');
 }
-.postbackground{
-    background-image: url('Images/post-bg.jpg');
+
+.postbackground {
+    background-image: url('Images/blog_typewriter.jpg');
 }
+
+#search {
+    float: right;
+    margin-top: 9px;
+    width: 250px;
+}
+
+.search {
+    height: 30px;
+    position: relative;
+    left: 10px;
+    float: left;
+    line-height: 22px;
+}
+    .search:hover .searchTextBox, .search input:focus {
+        width: 200px;
+        display: inline;
+    }
+
+    .searchTextBox{
+        display: none;
+        border-radius: 5px;
+        color: black;
+    }
+

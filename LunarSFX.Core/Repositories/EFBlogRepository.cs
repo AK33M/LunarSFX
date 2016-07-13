@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LunarSFX.Core.Objects;
+using System.Data.Entity.Migrations;
 
 namespace LunarSFX.Core.Repositories
 {
@@ -25,12 +26,36 @@ namespace LunarSFX.Core.Repositories
 
         public void EditPost(Post post)
         {
-            _context.Entry(post).State = System.Data.Entity.EntityState.Modified;
+            UpdatePostTags(post);
+             
+            _context.Set<Post>().AddOrUpdate(post);
             _context.SaveChanges();
         }
+
+        private void UpdatePostTags(Post post)
+        {
+            var existingPost = _context.Posts.Where(p => p.Id == post.Id).FirstOrDefault();
+
+            var deletedTags = existingPost.Tags.Except(post.Tags).ToList();
+
+            var addedTags = post.Tags.Except(existingPost.Tags).ToList();
+
+            deletedTags.ForEach(c => existingPost.Tags.Remove(c));
+
+            foreach(var tag in addedTags)
+            {
+                if (_context.Entry(tag).State == System.Data.Entity.EntityState.Detached)
+                    _context.Tags.Attach(tag);
+
+                existingPost.Tags.Add(tag);
+            }
+
+            _context.SaveChanges();
+        }
+
         public void DeletePost(int id)
         {
-            var post = Post(id);
+            var post = Post(id);            
             _context.Entry(post).State = System.Data.Entity.EntityState.Deleted;
             _context.SaveChanges();
         }

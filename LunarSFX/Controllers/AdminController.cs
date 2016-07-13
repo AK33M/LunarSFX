@@ -9,14 +9,16 @@ using System.Web.Mvc;
 
 namespace LunarSFX.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin,SuperAdmin")]
     public class AdminController : Controller
     {
         private IBlogRepository _blogRepository;
+        
 
         public AdminController(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
+            
         }
 
         // GET: Admin
@@ -297,7 +299,7 @@ namespace LunarSFX.Controllers
                     category.Id, category.Name));
             }
 
-            sb.AppendLine("<select>");
+            sb.AppendLine("</select>");
             return Content(sb.ToString(), "text/html");
         }
 
@@ -314,7 +316,7 @@ namespace LunarSFX.Controllers
                     tag.Id, tag.Name));
             }
 
-            sb.AppendLine("<select>");
+            sb.AppendLine("</select>");
             return Content(sb.ToString(), "text/html");
         }
     }

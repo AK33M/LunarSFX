@@ -43,9 +43,9 @@ namespace LunarSFX
             }
 
             if (bindingContext.ValueProvider.GetValue("oper").AttemptedValue.Equals("edit"))
-                post.Modified = DateTime.UtcNow;
+                post.Modified = DateTime.Now;
             else
-                post.PostedOn = DateTime.UtcNow;
+                post.PostedOn = DateTime.Now;
 
             return post;
         }

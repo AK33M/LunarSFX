@@ -18,7 +18,8 @@
 
     <!-- logout link -->
     <div style="text-align:right; margin-bottom:5px;">
-        @Html.ActionLink("logout", "Logout")
+        <p>@Html.ActionLink("logout", "LogOut", "Auth")</p> 
+        <p> @Html.ActionLink("Return to posts", "Posts", "Blog")</p>
     </div>
 
     <h2>Manage Posts, Categories and Tags</h2>
@@ -29,6 +30,10 @@
             <li><a href="#tab-posts">Posts</a></li>
             <li><a href="#tab-cats">Categories</a></li>
             <li><a href="#tab-tags">Tags</a></li>
+            @if (CurrentUser.IsInRole("SuperAdmin"))
+            {
+                <li><a href="#tab-users">Users</a></li>
+            }           
         </ul>
 
         <div id="tab-posts" class="tab">
@@ -48,6 +53,14 @@
             <div id="pagerTags" class="pager">
             </div>
         </div>
+        @if (CurrentUser.IsInRole("SuperAdmin"))
+        {
+            <div id="tab-users" class="tab">
+                <table id="tableUsers" class="grid"></table>
+                <div id="pagerUsers" class="pager">
+                </div>
+            </div>
+        }       
     </div>
 
     <!-- jquery library -->

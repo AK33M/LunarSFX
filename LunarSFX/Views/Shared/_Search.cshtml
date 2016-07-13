@@ -1,13 +1,7 @@
-﻿<div class="sidebar">
-    @using (Html.BeginForm(
-                    "Search",           // action
-                    "Blog",             // controller
-                    FormMethod.Get,     // method
-                    new { id = "search-form" })) // html attributes
-{
-    <p>
-        @Html.TextBox("s")
-        <input type="submit" value="Search">
-    </p>
-}
-</div>
+﻿<a>
+    @using (Html.BeginForm("Search", "Blog", FormMethod.Get, new { id = "search-form", @class = "searchTextBox, search" }))
+    {
+        <i class="glyphicon glyphicon-search"></i>
+        @Html.TextBox("s", null, new { maxlength = "64", placeholder = "Search", @class = "searchTextBox" })
+    }
+</a>

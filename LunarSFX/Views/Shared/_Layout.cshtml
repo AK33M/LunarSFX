@@ -44,13 +44,14 @@
                     {
                         <li>@Html.ActionLink("Log Out", "LogOut", "Auth")</li>
                     }
-                    @if (CurrentUser.IsInRole("Admin"))
+                    @if (CurrentUser.IsInRole("Admin") || CurrentUser.IsInRole("SuperAdmin"))
                     {
                         <li>@Html.ActionLink("Admin", "Manage", "Admin")</li>
                     }
                     <li>@Html.ActionLink("Contact Us", "Contact", "Blog")</li>
                     <li>@Html.ActionLink("About Us", "About", "Blog")</li>
-                </ul>
+                    <li>@Html.Partial("_Search")</li>
+                </ul>               
             </div>
         </div>
     </nav>

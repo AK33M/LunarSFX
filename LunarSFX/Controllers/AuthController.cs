@@ -1,11 +1,9 @@
 using LunarSFX.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using System.Resources;
 
 namespace LunarSFX.Controllers
 {
@@ -38,10 +36,6 @@ namespace LunarSFX.Controllers
             {
                 return View();
             }
-            
-
-            //ViewBag.Greeting1 = HttpContext.GetGlobalResourceObject("Labels", "Greeting");
-            //ViewBag.Greeting2 = LunarSFX.Resources.Labels.Greeting;
 
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
 
@@ -116,11 +110,8 @@ namespace LunarSFX.Controllers
 
         public ActionResult LogOut()
         {
-            //var ctx = Request.GetOwinContext();
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            //var authManager = ctx.Authentication;
 
-            //authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Posts", "Blog");
         }
 
@@ -141,13 +132,11 @@ namespace LunarSFX.Controllers
                 if (_userManager != null)
                 {
                     _userManager.Dispose();
-                    //_userManager = null;
                 }
 
                 if (_signInManager != null)
                 {
                     _signInManager.Dispose();
-                   // _signInManager = null;
                 }
             }
 

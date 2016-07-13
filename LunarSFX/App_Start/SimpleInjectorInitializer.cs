@@ -41,10 +41,10 @@ namespace LunarSFX.App_Start
             container.RegisterPerWebRequest<AppSignInManager>();
 
             //TODO: Role Manager
-            /*container.RegisterPerWebRequest<ApplicationRoleManager>();
-                container.RegisterPerWebRequest<IRoleStore<IdentityRole, string>>(
-                () => new RoleStore<IdentityRole>(
-              container.GetInstance<ApplicationDbContext>()));*/
+            container.RegisterPerWebRequest<AppRoleManager>();
+            container.RegisterPerWebRequest<IRoleStore<IdentityRole, string>>(
+                    () => new RoleStore<IdentityRole>(
+                  container.GetInstance<AppDbContext>()));
 
             container.RegisterPerWebRequest<LunarSFXDbContext>();
             container.RegisterPerWebRequest<IAuthenticationManager>(() => 

@@ -17,7 +17,7 @@
     <AssemblyName>LunarSFX</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44389</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -198,6 +198,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\ad_copy_text.jpg" />
+    <Content Include="Content\Images\blog_typewriter.jpg" />
+    <Content Include="Content\Images\mac-notepad.jpg" />
+    <Content Include="Content\Images\mac-notepad2.jpg" />
+    <Content Include="Content\Images\mackeyboard.jpg" />
     <Content Include="Content\site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -234,6 +239,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\themes\clean\clean-blog.css" />
     <Content Include="Content\themes\clean\clean-blog.min.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Images\about-bg.jpg" />
@@ -490,6 +496,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ActionLinkExtensions.cs" />
     <Compile Include="Extensions\AppViewPage.cs" />
     <Compile Include="Extensions\CustomDateTimeConverter.cs" />
@@ -573,8 +580,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\js\" />
-    <Folder Include="Views\App\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LunarSFX.Core\LunarSFX.Core.csproj">
