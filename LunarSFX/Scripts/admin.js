@@ -357,35 +357,7 @@ $(function () {
                                 addOptions,
                                 deleteOptions);
 
-            //ajaxFileUpload
-            function ajaxFileUpload(id) {
-                $.ajaxFileUpload
-                (
-                    {
-                        url: 'Admin/UploadImage',
-                        secureuri: false,
-                        fileElementId: 'Image',
-                        dataType: 'json',
-                        data: { id: id },
-                        success: function (data, status) {
-                            if (typeof (data.isUploaded) != 'undefined') {
-                                if (data.isUploaded == true) {
-                                    return;
-                                } else {
-                                    alert(data.message);
-                                }
-                            }
-                            else {
-                                return alert('Failed to upload image!');
-                            }
-                        },
-                        error: function (data, status, e) {
-                            return alert('Failed to upload image!');
-                        }
-                    }
-                )
-                return false;
-            }
+
 
         },
 
@@ -862,11 +834,41 @@ $(function () {
 
             if (data.success == true) {
                 if ($("#Image").val() != "") {
-                    ajaxFileUpload(data.id);
+                    LunarSFX.GridManager.ajaxFileUpload(data.id);
                 }
             }
 
             return [data.success, data.message, data.id];
+        },
+
+        //ajaxFileUpload
+        ajaxFileUpload: function ajaxFileUpload(id) {
+            $.ajaxFileUpload
+            (
+                {
+                    url: 'Admin/UploadImage',
+                    secureuri: false,
+                    fileElementId: 'Image',
+                    dataType: 'json',
+                    data: { id: id },
+                    success: function (data, status) {
+                        if (typeof (data.isUploaded) != 'undefined') {
+                            if (data.isUploaded == true) {
+                                return;
+                            } else {
+                                alert(data.message);
+                            }
+                        }
+                        else {
+                            return alert('Failed to upload image!');
+                        }
+                    },
+                    error: function (data, status, e) {
+                        return alert('Failed to upload image!');
+                    }
+                }
+            )
+            return false;
         }
     };
 

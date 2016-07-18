@@ -28,5 +28,6 @@ namespace LunarSFX.Core.Objects
         public virtual Category Category { get; set; }
         public virtual IList<Tag> Tags { get; set; }
         public virtual int CategoryId { get; set; }
+        public virtual string Image { get; set; }
     }
 }

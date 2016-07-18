@@ -326,7 +326,8 @@ namespace LunarSFX.Controllers
         [HttpPost]
         public JsonResult UploadImage(HttpPostedFileBase Image)
         {
-            string directory = @"D:\Temp\";
+            //string directory = @"C:\Temp\";
+            string directory = Path.GetTempPath();
 
             if (Image != null && Image.ContentLength > 0)
             {

@@ -54,6 +54,9 @@ namespace LunarSFX.Core.Mappings
                         .Property(x => x.Modified);
 
             _modelBuilder.Entity<Post>()
+                        .Property(x => x.Image);
+
+            _modelBuilder.Entity<Post>()
                         .HasRequired(x => x.Category)
                         .WithMany(x => x.Posts)
                         .HasForeignKey(x => x.CategoryId);
