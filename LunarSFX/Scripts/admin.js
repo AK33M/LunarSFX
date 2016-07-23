@@ -72,6 +72,7 @@ $(function () {
 
             columns.push({
                 name: 'ShortDescription',
+                index: 'ShortDescription',
                 width: 250,
                 sortable: false,
                 hidden: true,
@@ -94,6 +95,7 @@ $(function () {
 
             columns.push({
                 name: 'Description',
+                index: 'Description',
                 width: 250,
                 sortable: false,
                 hidden: true,
@@ -246,7 +248,18 @@ $(function () {
                 gridview: false,
                 autoendcode: true,
 
-                afterInsertRow: function (rowid,rowdata, rowelem) {
+                afterInsertRow: function (rowid, rowdata, rowelem) {
+                    var published = rowdata["Published"];
+
+                    if (!published) {
+                        $(gridName).setRowData(rowid, [], {
+                            color: '#9D9687'
+                        });
+                        $(gridName + " tr#" + rowid + " a").css({
+                            color: '#9D9687'
+                        });
+                    }
+
                     var tags = rowdata["Tags"];
                     var tagStr = "";
 
@@ -327,7 +340,8 @@ $(function () {
                                 editOptions,
                                 addOptions,
                                 deleteOptions);
-                        },
+
+        },
 
         // function to create grid to manage categories
         categoriesGrid: function (gridName, pagerName) {
@@ -787,6 +801,9 @@ $(function () {
 
         },
 
+
+
+
         afterSubmitHandler: function (response, postdata) {
 
             var json = $.parseJSON(response.responseText);
@@ -794,6 +811,7 @@ $(function () {
             if (json) return [json.success, json.message, json.id];
 
             return [false, "Failed to get result from server.", null];
+
         }
     };
 
@@ -835,5 +853,28 @@ $(function () {
 
             fn(gridName, pagerName);
         }
+    });
+
+    tinymce.init({
+        selector: 'textarea',
+        height: 500,
+        theme: 'modern',
+        plugins: [
+          'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+          'searchreplace wordcount visualblocks visualchars code fullscreen',
+          'insertdatetime media nonbreaking save table contextmenu directionality',
+          'emoticons template paste textcolor colorpicker textpattern imagetools'
+        ],
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        image_advtab: true,
+        templates: [
+          { title: 'Test template 1', content: 'Test 1' },
+          { title: 'Test template 2', content: 'Test 2' }
+        ],
+        content_css: [
+          '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+          '//www.tinymce.com/css/codepen.min.css'
+        ]
     });
 });

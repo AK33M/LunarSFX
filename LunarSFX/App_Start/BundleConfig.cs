@@ -16,7 +16,7 @@ namespace LunarSFX
             //Admin bundling
             bundles.Add(new StyleBundle("~/Content/ui.jqGrid/css").IncludeDirectory("~/Scripts/jquery.jqGrid-5.1.1/css", "*.css"));
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include("~/Content/themes/base/all.css"));
-            bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Content/admin/admin.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Content/admin/ajaxfileupload.css", "~/Content/admin/admin.css"));
 
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include("~/Scripts/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/Scripts/jqueryui").Include("~/Scripts/jquery-ui-{version}.js"));
