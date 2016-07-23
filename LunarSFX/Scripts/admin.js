@@ -45,8 +45,7 @@ $(function () {
                 'Url Slug',
                 'Published',
                 'Posted On',
-                'Modified',
-                'Image'
+                'Modified'
             ];
 
             var columns = [];
@@ -215,21 +214,6 @@ $(function () {
                 datefmt: 'm/d/Y'
             });
 
-            columns.push({
-                name: 'Image',
-                index: 'Image',
-                align: 'left',
-                editable: true,
-                edittype: 'file',
-                editOptions: {
-                    enctype: "multipart/form-data"
-                },
-                width: 210,
-                //align: 'center',
-                //formatter: jqImageFormatter,
-                search: false
-            });
-
             // create the grid
             $(gridName).jqGrid({
                 // server url and other ajax stuff
@@ -356,36 +340,6 @@ $(function () {
                                 editOptions,
                                 addOptions,
                                 deleteOptions);
-
-            //ajaxFileUpload
-            function ajaxFileUpload(id) {
-                $.ajaxFileUpload
-                (
-                    {
-                        url: 'Admin/UploadImage',
-                        secureuri: false,
-                        fileElementId: 'Image',
-                        dataType: 'json',
-                        data: { id: id },
-                        success: function (data, status) {
-                            if (typeof (data.isUploaded) != 'undefined') {
-                                if (data.isUploaded == true) {
-                                    return;
-                                } else {
-                                    alert(data.message);
-                                }
-                            }
-                            else {
-                                return alert('Failed to upload image!');
-                            }
-                        },
-                        error: function (data, status, e) {
-                            return alert('Failed to upload image!');
-                        }
-                    }
-                )
-                return false;
-            }
 
         },
 
@@ -852,21 +806,12 @@ $(function () {
 
         afterSubmitHandler: function (response, postdata) {
 
-            //var json = $.parseJSON(response.responseText);
+            var json = $.parseJSON(response.responseText);
 
-            //if (json) return [json.success, json.message, json.id];
+            if (json) return [json.success, json.message, json.id];
 
-            //return [false, "Failed to get result from server.", null];
+            return [false, "Failed to get result from server.", null];
 
-            var data = $.parseJSON(response.responseText);
-
-            if (data.success == true) {
-                if ($("#Image").val() != "") {
-                    ajaxFileUpload(data.id);
-                }
-            }
-
-            return [data.success, data.message, data.id];
         }
     };
 

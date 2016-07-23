@@ -23,7 +23,7 @@ namespace LunarSFX
             bundles.Add(new ScriptBundle("~/Scripts/jqgrid").Include("~/Scripts/jquery.jqGrid-5.1.1/js/i18n/grid.locale-en.js",
                                                                      "~/Scripts/jquery.jqGrid-5.1.1/js/jquery.jqGrid.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/tinymce/js").Include("~/Scripts/tinymce/tinymce.js"));
-            bundles.Add(new ScriptBundle("~/Scripts/admin/js").Include("~/Scripts/ajaxfileupload.js", "~/Scripts/admin.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/admin/js").Include("~/Scripts/admin.js"));
         }
     }
 }
